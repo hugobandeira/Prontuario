@@ -74,6 +74,16 @@ $route->group('/medicos', function () use ($route) {
         $MedicosController = new \App\Controllers\MedicosController();
         $MedicosController->store();
     });
+    $route->get('/edit/{id}', function ($request) {
+        $id = $request->getAttribute('id');
+        $MedicosController = new \App\Controllers\MedicosController();
+        $MedicosController->show($id);
+    });
+    $route->post('/edit', function ($request) {
+        $MedicosController = new \App\Controllers\MedicosController();
+        $MedicosController->update();
+    });
+
     $route->get('/dss', function () {
         $MedicosController = new \App\Controllers\MedicosController();
         $MedicosController->Index();

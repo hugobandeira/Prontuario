@@ -39,6 +39,25 @@
                                     <td><?= $medico['email'] ?></td>
                                     <td><?= $medico['telefone'] ?></td>
                                     <td><?= $medico['cidade'] ?></td>
+                                    <td><a class="btn btn-primary"
+                                           href="produto-altera-formulario.php?id=<?= $produto['id'] ?>">alterar</a>
+                                    </td>
+
+                                    <td>
+                                        <a class="btn btn-fill btn-sm btn-default"
+                                           href="/medicos/edit/<?php echo $medico['id']; ?>">
+                                            <div class="font-icon-detail">
+                                                <i class="pe-7s-pen"></i>
+                                            </div>
+                                        </a>
+                                        <a href="#" class="btn btn-fill btn-sm btn-danger">
+                                            <div class="font-icon-list">
+                                                <div class="font-icon-detail">
+                                                    <i class="pe-7s-trash"></i>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </td>
                                 </tr>
                             <?php } ?>
 
@@ -51,8 +70,9 @@
         </div>
     </div>
 </div>
+
+<script src="/public_html/js/jquery-3.2.1.min.js"></script>
 <script>
-    $("medicos").addClass('active');
-    console.log("teste");
+    $('#medicos').addClass('active')
 </script>
 <?php include __DIR__ . '/../../layouts/rodape.php'; ?>

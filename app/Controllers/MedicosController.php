@@ -37,13 +37,19 @@ class MedicosController
         return header('/medicos');
     }
 
-    public function show()
+    public function show($id)
     {
-        //
+        $medico = Medicos::selectAll($id)[0];
+        \App\View::make('/admin/medicos/edit', ['medico' => $medico]);
+
     }
 
     public function update()
     {
+        $medico = $_POST;
+        if (Medicos::update($medico)) {
+            header('location: /');
+        };
 
     }
 

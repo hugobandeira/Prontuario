@@ -48,4 +48,9 @@
     </div>
 </div>
 
+<script src="/public_html/js/jquery-3.2.1.min.js"></script>
+<script>
+    $('#agendamentos').addClass('active');
+</script>
+
 <?php include __DIR__ . '/../layouts/rodape.php'; ?>

@@ -7,13 +7,13 @@
         </div>
 
         <ul class="nav">
-            <li>
+            <li id="agendamentos">
                 <a href="/">
                     <i class="pe-7s-graph"></i>
                     <p>Agendamentos</p>
                 </a>
             </li>
-            <li>
+            <li id="pacientes">
                 <a href="/pacientes">
                     <i class="pe-7s-user"></i>
                     <p>Pacientes</p>
