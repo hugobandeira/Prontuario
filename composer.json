@@ -1,0 +1,15 @@
+{
+  "autoload": {
+    "psr-4": {
+      "Projeto\\": "bootstrap/projeto/",
+      "App\\": "app/"
+    },
+    "files": [
+      "app/helpers.php"
+    ]
+  },
+  "require": {
+    "slim/slim": "^3.0",
+    "twig/twig": "^2.4"
+  }
+}
