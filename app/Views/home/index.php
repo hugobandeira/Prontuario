@@ -1,4 +1,3 @@
-<?php include __DIR__ . '/../layouts/cabecalho.php'; ?>
 <div class="content">
     <div class="container-fluid">
         <div class="row">
@@ -52,5 +51,3 @@
 <script>
     $('#agendamentos').addClass('active');
 </script>
-
-<?php include __DIR__ . '/../layouts/rodape.php'; ?>

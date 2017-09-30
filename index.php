@@ -84,9 +84,10 @@ $route->group('/medicos', function () use ($route) {
         $MedicosController->update();
     });
 
-    $route->get('/dss', function () {
+    $route->get('/delete/{id}', function ($request) {
+        $id = $request->getAttribute('id');
         $MedicosController = new \App\Controllers\MedicosController();
-        $MedicosController->Index();
+        $MedicosController->delete($id);
     });
 });
 

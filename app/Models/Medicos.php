@@ -176,8 +176,8 @@ class Medicos
         $stmt->bindParam(':celular', $medico['celular']);
         $stmt->bindParam(':trabalho', $medico['trabalho']);
         if ($stmt->execute()) {
-            header('location: /');
             return true;
+
         } else {
             echo "Erro ao cadastrar";
             print_r($stmt->errorInfo());
@@ -196,7 +196,7 @@ class Medicos
 
         // remove do banco
         $DB = new DB;
-        $sql = "DELETE FROM users WHERE id = :id";
+        $sql = "DELETE FROM Medicos WHERE id = :id";
         $stmt = $DB->prepare($sql);
         $stmt->bindParam(':id', $id, \PDO::PARAM_INT);
 

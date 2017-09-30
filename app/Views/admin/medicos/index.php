@@ -1,16 +1,14 @@
-<?php include __DIR__ . '/../../layouts/cabecalho.php'; ?>
 <div class="content">
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
                     <br>
-                    <div class="pull-right">
+                    <div class="pull-right col-md-2">
                         <a href="/medicos/add">
-                            <button id="btnNovo" class="btn btn-fill btn-sm btn-default" data-toggle="modal"
+                            <button id="btnNovo" class="btn btn-fill btn-sm btn-success" data-toggle="modal"
                                     data-target="#myModal">
-                                <i class="fa fa-plus"></i>
-                                Adicionar
+                                <strong> Adicionar</strong>
                             </button>
                         </a>
                     </div>
@@ -28,42 +26,40 @@
                                 <th>Email</th>
                                 <th>Telefone</th>
                                 <th>Cidade</th>
+                                <th>Ações</th>
                             </tr>
                             </thead>
                             <tbody>
+                            <?php
+                            if (isset($medicos[0])) {
+                                foreach ($medicos[0] as $medico) { ?>
+                                    <tr>
+                                        <td><?= $medico['id'] ?></td>
+                                        <td><?= $medico['nome'] ?></td>
+                                        <td><?= $medico['email'] ?></td>
+                                        <td><?= $medico['telefone'] ?></td>
+                                        <td><?= $medico['cidade'] ?></td>
 
-                            <?php foreach ($medicos[0] as $medico) { ?>
-                                <tr>
-                                    <td><?= $medico['id'] ?></td>
-                                    <td><?= $medico['nome'] ?></td>
-                                    <td><?= $medico['email'] ?></td>
-                                    <td><?= $medico['telefone'] ?></td>
-                                    <td><?= $medico['cidade'] ?></td>
-                                    <td><a class="btn btn-primary"
-                                           href="produto-altera-formulario.php?id=<?= $produto['id'] ?>">alterar</a>
-                                    </td>
-
-                                    <td>
-                                        <a class="btn btn-fill btn-sm btn-default"
-                                           href="/medicos/edit/<?php echo $medico['id']; ?>">
-                                            <div class="font-icon-detail">
-                                                <i class="pe-7s-pen"></i>
-                                            </div>
-                                        </a>
-                                        <a href="#" class="btn btn-fill btn-sm btn-danger">
-                                            <div class="font-icon-list">
+                                        <td>
+                                            <a class="btn btn-fill btn-sm btn-default"
+                                               href="/medicos/edit/<?php echo $medico['id']; ?>">
                                                 <div class="font-icon-detail">
-                                                    <i class="pe-7s-trash"></i>
+                                                    <!--<i class="pe-7s-pen"></i>-->
+                                                    <strong>Editar</strong>
                                                 </div>
-                                            </div>
-                                        </a>
-                                    </td>
-                                </tr>
-                            <?php } ?>
+                                            </a>
+                                            <a class="btn btn-fill btn-sm btn-danger"
+                                               href="/medicos/delete/<?php echo $medico['id']; ?>"
+                                               onclick="return confirm('Tem certeza de que deseja remover?');">
+                                                <strong> Deletar</strong>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                <?php }
+                            } ?>
 
                             </tbody>
                         </table>
-
                     </div>
                 </div>
             </div>
@@ -75,4 +71,4 @@
 <script>
     $('#medicos').addClass('active')
 </script>
-<?php include __DIR__ . '/../../layouts/rodape.php'; ?>
+

@@ -48,14 +48,19 @@ class MedicosController
     {
         $medico = $_POST;
         if (Medicos::update($medico)) {
-            header('location: /');
+            header('Location: http://localhost:8000/medicos');
+            exit;
         };
 
     }
 
-    public
-    function delete($id)
+    public function delete($id)
     {
+        if (Medicos::remove($id)) {
+            header('Location: http://localhost:8000/medicos');
+            exit;
+        }
+
 
     }
 }

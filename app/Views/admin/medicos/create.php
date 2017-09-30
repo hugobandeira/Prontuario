@@ -1,4 +1,3 @@
-<?php include __DIR__ . '/../../layouts/cabecalho.php'; ?>
 <div class="content">
     <div class="container-fluid">
         <div class="row">
@@ -188,7 +187,6 @@
 <script>
     $('#medicos').addClass('active')
 </script>
-<?php include __DIR__ . '/../../layouts/rodape.php'; ?>
 
 
 
