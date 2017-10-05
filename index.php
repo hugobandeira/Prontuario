@@ -16,8 +16,12 @@ $route = new \Slim\App(['settings' => ['displayErrorDetails' => true]]);
 
 $route->group('/', function () use ($route) {
     $route->get('', function () {
-        $HomeController = new \App\Controllers\HomeController();
-        $HomeController->index();
+        $LoginController = new \App\Controllers\LoginController();
+        $LoginController->index();
+    });
+    $route->post('', function () {
+        $LoginController = new \App\Controllers\LoginController();
+        $LoginController->verifica();
     });
 });
 
@@ -62,39 +66,53 @@ $route->group('/user', function () use ($route) {
 });
 
 $route->group('/medicos', function () use ($route) {
-    $route->get('', function () {
-        $MedicosController = new \App\Controllers\MedicosController();
-        $MedicosController->index();
-    });
-    $route->get('/add', function () {
-        $MedicosController = new \App\Controllers\MedicosController();
-        $MedicosController->create();
-    });
-    $route->post('/add', function () {
-        $MedicosController = new \App\Controllers\MedicosController();
-        $MedicosController->store();
-    });
-    $route->get('/edit/{id}', function ($request) {
-        $id = $request->getAttribute('id');
-        $MedicosController = new \App\Controllers\MedicosController();
-        $MedicosController->show($id);
-    });
-    $route->post('/edit', function ($request) {
-        $MedicosController = new \App\Controllers\MedicosController();
-        $MedicosController->update();
-    });
+    session_start();
+    if ($_SESSION == true) {
+        $route->get('', function () {
+            $MedicosController = new \App\Controllers\MedicosController();
+            $MedicosController->index();
+        });
+        $route->get('/add', function () {
+            $MedicosController = new \App\Controllers\MedicosController();
+            $MedicosController->create();
+        });
+        $route->post('/add', function () {
+            $MedicosController = new \App\Controllers\MedicosController();
+            $MedicosController->store();
+        });
+        $route->get('/edit/{id}', function ($request) {
+            $id = $request->getAttribute('id');
+            $MedicosController = new \App\Controllers\MedicosController();
+            $MedicosController->show($id);
+        });
+        $route->post('/edit', function ($request) {
+            $MedicosController = new \App\Controllers\MedicosController();
+            $MedicosController->update();
+        });
 
-    $route->get('/delete/{id}', function ($request) {
-        $id = $request->getAttribute('id');
-        $MedicosController = new \App\Controllers\MedicosController();
-        $MedicosController->delete($id);
-    });
+        $route->get('/delete/{id}', function ($request) {
+            $id = $request->getAttribute('id');
+            $MedicosController = new \App\Controllers\MedicosController();
+            $MedicosController->delete($id);
+        });
+    } else {
+        header('location:/');
+    }
 });
 
-$route->group('/pacientes', function ()use($route){
-    $route->get('', function (){
+$route->group('/pacientes', function () use ($route) {
+    $route->get('', function () {
         $Pacientes = new \App\Controllers\PacientesController();
         $Pacientes->index();
     });
+    $route->get('/add', function ($request) {
+        $Pacientes = new \App\Controllers\PacientesController();
+        $Pacientes->create();
+    });
+    $route->post('/add', function ($request) {
+        $Pacientes = new \App\Controllers\PacientesController();
+        $Pacientes->store();
+    });
+
 });
 return $route->run();

@@ -3,6 +3,15 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
+                    <br>
+                    <div class="pull-right col-md-2">
+                        <a href="/pacientes/add">
+                            <button id="btnNovo" class="btn btn-fill btn-sm btn-success" data-toggle="modal"
+                                    data-target="#myModal">
+                                <strong> Adicionar</strong>
+                            </button>
+                        </a>
+                    </div>
                     <div class="header">
                         <h4 class="title">Pacientes</h4>
                         <p class="category">Lista de pacientes</p>
@@ -20,33 +29,30 @@
                             </thead>
                             <tbody>
                             <tr>
-                                <td>1</td>
-                                <td>Jackson Hugo</td>
-                                <td>Rua Coronel manuel B.</td>
-                                <td>Imperatriz</td>
-                                <td>
-                                    <button href="#" class="btn btn-fill btn-sm btn-default">
-                                        <div class="font-icon-detail">
-                                            <i class="pe-7s-pen"></i>
-                                        </div>
-                                    </button>
-                                    <a href="#" class="btn btn-fill btn-sm btn-danger">
-                                        <div class="font-icon-list">
-                                            <div class="font-icon-detail">
-                                                <i class="pe-7s-trash"></i>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </td>
+                                <?php if (isset($pacientes)) {
+                                    foreach ($pacientes as $paciente) {
+                                        ?>
+                                        <td>1</td>
+                                        <td>Jackson Hugo</td>
+                                        <td>Rua Coronel manuel B.</td>
+                                        <td>Imperatriz</td>
+                                        <td>
+                                            <a class="btn btn-fill btn-sm btn-default"
+                                               href="/paciente/edit/<?php echo $paciente['id']; ?>">
+                                                <div class="font-icon-detail">
+                                                    <!--<i class="pe-7s-pen"></i>-->
+                                                    <strong>Editar</strong>
+                                                </div>
+                                            </a>
+                                            <a class="btn btn-fill btn-sm btn-danger"
+                                               href="/paciente/delete/<?php echo $paciente['id']; ?>"
+                                               onclick="return confirm('Tem certeza de que deseja remover?');">
+                                                <strong> Deletar</strong>
+                                            </a>
+                                        </td>
+                                    <?php }
+                                }; ?>
                             </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>Minerva Hooper</td>
-                                <td>$23,789</td>
-                                <td>Curaçao</td>
-                                <td>Sinaai-Waas</td>
-                            </tr>
-
                             </tbody>
                         </table>
 

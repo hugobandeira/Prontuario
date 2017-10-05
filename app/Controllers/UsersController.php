@@ -17,6 +17,10 @@ class UsersController
         \App\View::make('/layouts/app');
     }
 
+    public function verifica(){
+
+    }
+
     /**
      * Exibe o formulário de criação de usuário
      */

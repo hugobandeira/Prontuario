@@ -10,7 +10,7 @@ class HomeController
      */
     public function index()
     {
-        \App\View::make('/home/index');
+        \App\View::make('/login/index');
 
     }
 

@@ -75,7 +75,7 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="<?php session_destroy() ?>">
                         <p>Sair</p>
                     </a>
                 </li>

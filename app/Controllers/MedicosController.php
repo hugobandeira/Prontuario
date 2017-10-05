@@ -25,8 +25,8 @@ class MedicosController
 
     public function store()
     {
-
-
+//        Não será permitido cadastros com mesmo CPF e RG.
+//        Se não cidades e especialidades cadastradas não poderá concluir o cadastro do médico
         $medico = $_POST;
         if (Medicos::save($medico)) {
             header('location: /medicos');

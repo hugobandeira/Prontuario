@@ -14,7 +14,7 @@
                     </div>
                     <br>
                     <div class="header">
-                        <h4 class="title">Médicos</h4>
+                        <h4 class="title"><strong>Médicos</strong></h4>
                         <p class="category">Lista de médicos</p>
                     </div>
                     <div class="content table-responsive table-full-width">
