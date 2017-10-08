@@ -24,4 +24,5 @@ class View
         // inclui o template, que vai processar a view na variável $viewName
         require_once viewsPath() . 'template.php';
     }
+
 }

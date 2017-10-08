@@ -9,7 +9,7 @@ class PacientesController
 {
     public function __construct()
     {
-
+        session_start();
     }
 
     /**
@@ -17,9 +17,13 @@ class PacientesController
      */
     public function index()
     {
+        if ($_SESSION['nivel'] == 1 || $_SESSION['nivel'] == 2) {
+            \App\View::make('/admin/pacientes/index');
 
-        \App\View::make('/admin/pacientes/index');
-
+        } else {
+            header('location: /');
+            exit();
+        }
     }
 
 

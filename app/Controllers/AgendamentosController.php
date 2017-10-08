@@ -1,7 +1,18 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: hugo
- * Date: 29/09/17
- * Time: 01:39
- */
+
+
+namespace App\Controllers;
+
+class AgendamentosController
+{
+    public function __construct()
+    {
+        session_start();
+    }
+
+    public function index()
+    {
+
+        \App\View::make('admin/agendamentos/index');
+    }
+}

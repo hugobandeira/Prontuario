@@ -5,12 +5,17 @@ namespace App\Controllers;
 
 class HomeController
 {
+    public function __construct()
+    {
+        session_start();
+    }
+
     /**
      * @return mixed
      */
     public function index()
     {
-        \App\View::make('/login/index');
+        \App\View::make('/home/index');
 
     }
 

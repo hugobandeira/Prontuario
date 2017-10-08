@@ -8,7 +8,7 @@
 
         <ul class="nav">
             <li id="agendamentos">
-                <a href="/">
+                <a href="/agendamentos">
                     <i class="pe-7s-graph"></i>
                     <p>Agendamentos</p>
                 </a>

@@ -7,11 +7,7 @@
 <script language="JavaScript" type="text/javascript" src="/public_html/js/bootstrap.min.js""></script>
 
 <!--  Checkbox, Radio & Switch Plugins -->
-<
-script
-language = "JavaScript"
-type = "text/javascript"
-src = "/public_html/js/bootstrap-checkbox-radio-switch.js" ></script>
+<script language="JavaScript" type="text/javascript" src="/public_html/js/bootstrap-checkbox-radio-switch.js" ></script>
 
 <!--  Charts Plugin -->
 <script src="/public_html/js/chartist.min.js"></script>

@@ -6,11 +6,8 @@
  * Time: 20:39
  */
 
-require_once __DIR__ . '/bootstrap/names.php';
 require_once __DIR__ . '/vendor/autoload.php';
 require_once __DIR__ . '/init.php';
-require_once __DIR__ . '/bootstrap/twig.php';
-
 
 $route = new \Slim\App(['settings' => ['displayErrorDetails' => true]]);
 
@@ -23,8 +20,29 @@ $route->group('/', function () use ($route) {
         $LoginController = new \App\Controllers\LoginController();
         $LoginController->verifica();
     });
+    $route->get('logout', function () {
+        $LoginController = new \App\Controllers\LoginController();
+        $LoginController->logout();
+    });
 });
 
+$route->group('/home', function () use ($route) {
+    $route->get('', function () {
+        $HomeController = new \App\Controllers\HomeController();
+        $HomeController->index();
+    });
+});
+
+$route->group('/agendamentos', function () use ($route) {
+    $route->get('', function () {
+        $AgendamentosController = new \App\Controllers\AgendamentosController();
+        $AgendamentosController->index();
+    });
+});
+
+/*
+ *USUARIOS CADASTRO PARA ADMIN
+ */
 $route->group('/user', function () use ($route) {
 // página inicial
 // listagem de usuários
@@ -66,38 +84,33 @@ $route->group('/user', function () use ($route) {
 });
 
 $route->group('/medicos', function () use ($route) {
-    session_start();
-    if ($_SESSION == true) {
-        $route->get('', function () {
-            $MedicosController = new \App\Controllers\MedicosController();
-            $MedicosController->index();
-        });
-        $route->get('/add', function () {
-            $MedicosController = new \App\Controllers\MedicosController();
-            $MedicosController->create();
-        });
-        $route->post('/add', function () {
-            $MedicosController = new \App\Controllers\MedicosController();
-            $MedicosController->store();
-        });
-        $route->get('/edit/{id}', function ($request) {
-            $id = $request->getAttribute('id');
-            $MedicosController = new \App\Controllers\MedicosController();
-            $MedicosController->show($id);
-        });
-        $route->post('/edit', function ($request) {
-            $MedicosController = new \App\Controllers\MedicosController();
-            $MedicosController->update();
-        });
+    $route->get('', function () {
+        $MedicosController = new \App\Controllers\MedicosController();
+        $MedicosController->index();
+    });
+    $route->get('/add', function () {
+        $MedicosController = new \App\Controllers\MedicosController();
+        $MedicosController->create();
+    });
+    $route->post('/add', function () {
+        $MedicosController = new \App\Controllers\MedicosController();
+        $MedicosController->store();
+    });
+    $route->get('/edit/{id}', function ($request) {
+        $id = $request->getAttribute('id');
+        $MedicosController = new \App\Controllers\MedicosController();
+        $MedicosController->show($id);
+    });
+    $route->post('/edit', function ($request) {
+        $MedicosController = new \App\Controllers\MedicosController();
+        $MedicosController->update();
+    });
 
-        $route->get('/delete/{id}', function ($request) {
-            $id = $request->getAttribute('id');
-            $MedicosController = new \App\Controllers\MedicosController();
-            $MedicosController->delete($id);
-        });
-    } else {
-        header('location:/');
-    }
+    $route->get('/delete/{id}', function ($request) {
+        $id = $request->getAttribute('id');
+        $MedicosController = new \App\Controllers\MedicosController();
+        $MedicosController->delete($id);
+    });
 });
 
 $route->group('/pacientes', function () use ($route) {

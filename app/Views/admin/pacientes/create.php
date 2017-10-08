@@ -1,3 +1,5 @@
+<?php include __DIR__."/../../layouts/cabecalho.php";?>
+
 <div class="content">
     <div class="container-fluid">
         <div class="row">
@@ -155,3 +157,4 @@
 
 
 
+<?php include __DIR__."/../../layouts/rodape.php";?>

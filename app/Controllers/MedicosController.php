@@ -3,17 +3,28 @@
 namespace App\Controllers;
 
 use App\Models\Medicos;
-use App\Models\User;
+use App\Controllers\LoginController;
 
 class MedicosController
 {
+    public function __construct()
+    {
+        session_start();
+    }
+
     /**
      * @return mixed
      */
     public function index()
     {
-        $medicos = array(Medicos::selectAll());
-        \App\View::make('/admin/medicos/index', ['medicos' => $medicos]);
+        if ($_SESSION['nivel'] == '1') {
+            $medicos = array(Medicos::selectAll());
+            \App\View::make('/admin/medicos/index', ['medicos' => $medicos]);
+
+        } else {
+            header('location: /home');
+            exit();
+        }
 
     }
 

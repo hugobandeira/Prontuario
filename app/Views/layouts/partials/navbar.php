@@ -7,6 +7,8 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
+            <a class="navbar-brand" href="/home">HOME</a>
+
         </div>
         <div class="collapse navbar-collapse">
             <ul class="nav navbar-nav navbar-left">
@@ -44,40 +46,28 @@
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
-                <li>
-                    <a href="#">
-                        <p>Conta</p>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <div class="font-icon-detail">
-                            <i class="pe-7s-user"></i>
-                            <p></p>
-                        </div>
-                    </a>
-                </li>
+
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         <p>
-                            Dropdown
+                            <i class="pe-7s-user"></i>
+                            <?php if (isset($_SESSION['nome'])) {
+                                echo $_SESSION['nome'];
+                            } else { ?>
+                                Faça Login
+                            <?php } ?>
                             <b class="caret"></b>
                         </p>
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a href="#">Action</a></li>
+                        <li><a href="#">Meus Dados</a></li>
                         <li><a href="#">Another action</a></li>
                         <li><a href="#">Something</a></li>
                         <li><a href="#">Another action</a></li>
                         <li><a href="#">Something</a></li>
                         <li class="divider"></li>
-                        <li><a href="#">Separated link</a></li>
+                        <li><a href="/logout">Sair</a></li>
                     </ul>
-                </li>
-                <li>
-                    <a href="<?php session_destroy() ?>">
-                        <p>Sair</p>
-                    </a>
                 </li>
                 <li class="separator hidden-lg hidden-md"></li>
             </ul>

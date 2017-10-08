@@ -1,3 +1,5 @@
+<?php include __DIR__ . "/../../layouts/cabecalho.php"; ?>
+
 <div class="content">
     <div class="container-fluid">
         <div class="row">
@@ -101,7 +103,8 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>DATA NASCIMENTO</label>
-                                        <input type="date" name="data_nascimento" class="form-control" placeholder="00/00/00">
+                                        <input type="date" name="data_nascimento" class="form-control"
+                                               placeholder="00/00/00">
                                     </div>
                                 </div>
                             </div>
@@ -187,6 +190,7 @@
 <script>
     $('#medicos').addClass('active')
 </script>
+<?php include __DIR__ . "/../../layouts/rodape.php"; ?>
 
 
 

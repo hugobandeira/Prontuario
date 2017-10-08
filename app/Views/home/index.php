@@ -1,53 +1,77 @@
-<div class="content">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-12">
+<?php include __DIR__ . '/../layouts/cabecalho.php'; ?>
+
+    <div class="content">
+        <div class="container-fluid">
+
+            <div class="card text-center">
+                <div class="card-header">
+                    Sistema de Agendamentos
+                </div>
+                <div class="card-block">
+                    <h4 class="card-title">Home</h4>
+                    <p class="card-text">Sistema feito para atender Medicos, recepcionistas e ajuda no serviço.</p>
+                    <?php if (isset($_SESSION['nome'])) { ?>
+                        <a href="#" class="btn btn-primary"><?= $_SESSION['nome']; ?> </a>
+                    <?php } else { ?>
+                        <a href="/" class="btn btn-warning">Fale conosco</a>
+                    <?php } ?>
+                </div>
+                <div class="card-footer text-muted">
+                    Hugo Soluções
+                </div>
+
+
+            </div>
+
+            <div class="col-md-3">
                 <div class="card">
-                    <div class="header">
-                        <h4 class="title">Agendamentos</h4>
-                        <p class="category">lista de atendimentos</p>
+                    <div style="text-align: center" class="header">
+                        <h4 class="title">Agendamento</h4>
+                        <p class="category">lista de agendamentos</p>
+                        <a href="/agendamentos" class="btn btn-primary">Faça um agendamento</a>
                     </div>
                     <div class="content table-responsive table-full-width">
-                        <table class="table table-hover table-striped">
-                            <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>Paciente</th>
-                                <th>Medico</th>
-                                <th>Descrição</th>
-                                <th style="width: 230px; text-align: center">Ações</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr id="tr_{{ $cidade->id }}">
-                                <td>1</td>
-                                <td>Jackson Hugo</td>
-                                <td>DR. Antonio Carlos</td>
-                                <td>dores pulmonares</td>
-                                <td>
-                                    <a class="btn btn-fill btn-sm btn-inverse"
-                                       href="{{ route($rota.'edit', ['id'=>$cidade->id]) }}">
-                                        <i class="fa fa-pencil" style="color: #fff;"></i>
-                                        Editar
-                                    </a>
-                                    <button class="btn btn-fill btn-sm btn-danger"
-                                            onclick="excluir('{{ $cidade->id }}', 'Cidades')">
-                                        <i class="fa fa-remove"></i>
-                                        Excluir
-                                    </button>
-                                </td>
-                            </tr>
-                            </tbody>
-                        </table>
+                    </div>
+                </div>
+            </div>
 
+            <div class="col-md-3">
+                <div class="card">
+                    <div style="text-align: center" class="header">
+                        <h4 class="title">Medicos</h4>
+                        <p class="category">Lista de Medicos</p>
+                        <a href="/medicos" class="btn btn-primary">Todos os Medicos</a>
+                    </div>
+                    <div class="content table-responsive table-full-width">
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div style="text-align: center" class="card">
+                    <div class="header">
+                        <h4 class="title">Pacientes</h4>
+                        <p class="category">lista de Pacientes</p>
+                        <a href="/pacientes" class="btn btn-primary">Todos os pacientes</a>
+                    </div>
+                    <div class="content table-responsive table-full-width">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div  style="text-align: center" class="card">
+                    <div class="header">
+                        <h4 class="title">Fa</h4>
+                        <p class="category">lista de Pacientes</p>
+                        <a href="/pacientes" class="btn btn-primary">Todos os pacientes</a>
+                    </div>
+                    <div class="content table-responsive table-full-width">
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 
-<script src="/public_html/js/jquery-3.2.1.min.js"></script>
-<script>
-    $('#agendamentos').addClass('active');
-</script>
+    <script src="/public_html/js/jquery-3.2.1.min.js"></script>
+
+<?php include __DIR__ . '/../layouts/rodape.php'; ?>
