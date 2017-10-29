@@ -46,7 +46,7 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>Cidade</label>
-                                        <input type="text" name="cidade" class="form-control" placeholder="Cidade">
+                                        <input type="text" name="cidades" class="form-control" placeholder="Cidade">
                                     </div>
                                 </div>
                                 <div class="col-md-4">
@@ -65,7 +65,7 @@
                                 </div>
                                 <div class="col-md-8">
                                     <div class="form-group">
-                                        <label for="exampleInputEmail1">Email</label>
+                                        <label for="email">Email</label>
                                         <input type="email" name="email" class="form-control" placeholder="Email">
                                     </div>
                                 </div>
@@ -126,8 +126,8 @@
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label>TELEFONE TRABALHO</label>
-                                        <input type="number" name="nacionalidade" class="form-control"
+                                        <label for="telefone_trabalho">TELEFONE TRABALHO</label>
+                                        <input type="number" name="telefone_trabalho" class="form-control"
                                                placeholder="(99) 9 9999-9999">
                                     </div>
                                 </div>

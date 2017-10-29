@@ -47,17 +47,35 @@ class Pacientes
         }
         // a data vem no formato dd/mm/YYYY
         // então precisamos converter para YYYY-mm-dd
-        //$isoDate = dateConvert($medico);
+        $isoDate = dateConvert($pacientes['data_nascimento']);
 
         // insere no banco
         $DB = new DB;
 
+//        nome` varchar(45) NOT NULL,
+//  `endereco` varchar(105) DEFAULT NULL,
+//  `bairro` varchar(45) DEFAULT NULL,
+//  `cidades` varchar(45) DEFAULT NULL,
+//  `estado` varchar(45) DEFAULT NULL,
+//  `cep` varchar(45) DEFAULT NULL,
+//  `complemento` varchar(45) DEFAULT NULL,
+//  `cpf` int(11) NOT NULL,
+//  `rg` int(11) NOT NULL,
+//  `data_nascimento` date NOT NULL,
+//  `naturalidade` varchar(45) DEFAULT NULL,
+//  `nacionalidade` varchar(45) DEFAULT NULL,
+//  `email` varchar(45) DEFAULT NULL,
+//  `telefone` int(11) DEFAULT NULL,
+//  `telefone_trabalho` int(11) DEFAULT NULL,
+//  `nome_pai` varchar(45) DEFAULT NULL,
+//  `nome_mae` varchar(45) DEFAULT NULL,
+//  `tipo_sangue` varchar(45) NOT NULL
 
-        $sql = "INSERT INTO Pacientes(
-                            nome, 
-                            endereco
+        $sql = "INSERT INTO Paci(
+                            nome, 
+                            endereco,
                             bairro,
-                            cidade,
+                            cidades,
                             estado,
                             cep,
                             complemento,
@@ -71,12 +89,13 @@ class Pacientes
                             telefone_trabalho,
                             nome_pai,
                             nome_mae,
-                            tipo_sangue)                       
+                            tipo_sangue
+                            )                       
                     VALUES(
-                            :nome, 
-                            :endereco
+                            :nome, 
+                            :endereco,
                             :bairro,
-                            :cidade,
+                            :cidades,
                             :estado,
                             :cep,
                             :complemento,
@@ -91,19 +110,17 @@ class Pacientes
                             :nome_pai,
                             :nome_mae,
                             :tipo_sangue)";
-var_dump($pacientes['nome']);
-die();
         $stmt = $DB->prepare($sql);
-
         $stmt->bindParam(':nome', $pacientes['nome']);
         $stmt->bindParam(':endereco', $pacientes['endereco']);
         $stmt->bindParam(':bairro', $pacientes['bairro']);
-        $stmt->bindParam(':cidade', $pacientes['cidade']);
+        $stmt->bindParam(':cidades', $pacientes['cidades']);
         $stmt->bindParam(':estado', $pacientes['estado']);
         $stmt->bindParam(':cep', $pacientes['cep']);
         $stmt->bindParam(':complemento', $pacientes['complemento']);
+        $stmt->bindParam(':cpf', $pacientes['cpf']);
         $stmt->bindParam(':rg', $pacientes['rg']);
-        $stmt->bindParam(':data_nascimento', $pacientes['data_nascimento']);
+        $stmt->bindParam(':data_nascimento', $isoDate);
         $stmt->bindParam(':naturalidade', $pacientes['naturalidade']);
         $stmt->bindParam(':nacionalidade', $pacientes['nacionalidade']);
         $stmt->bindParam(':email', $pacientes['email']);
@@ -120,7 +137,6 @@ die();
             print_r($stmt->errorInfo());
             return false;
         }
-        return header('/pacientes');
     }
 
 

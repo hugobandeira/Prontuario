@@ -36,7 +36,7 @@ class PacientesController
     {
         $paciente = $_POST;
         if (Pacientes::save($paciente)) {
-            header('location: /paciente');
+            header('location: /pacientes');
             exit();
         } else {
             return "erro";
