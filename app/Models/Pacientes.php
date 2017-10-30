@@ -52,7 +52,7 @@ class Pacientes
         // insere no banco
         $DB = new DB;
 
-//        nome` varchar(45) NOT NULL,
+//  `nome` varchar(45) NOT NULL,
 //  `endereco` varchar(105) DEFAULT NULL,
 //  `bairro` varchar(45) DEFAULT NULL,
 //  `cidades` varchar(45) DEFAULT NULL,
@@ -201,22 +201,21 @@ class Pacientes
         $stmt->bindParam(':nome', $pacientes['nome']);
         $stmt->bindParam(':endereco', $pacientes['endereco']);
         $stmt->bindParam(':bairro', $pacientes['bairro']);
-        $stmt->bindParam(':cidades', $pacientes['nome']);
-        $stmt->bindParam(':estado', $pacientes['nome']);
-        $stmt->bindParam(':cep', $pacientes['nome']);
-        $stmt->bindParam(':complemento', $pacientes['nome']);
-        $stmt->bindParam(':cpf', $pacientes['nome']);
-        $stmt->bindParam(':rg', $pacientes['nome']);
-        $stmt->bindParam(':data_nascimento', $pacientes['nome']);
-        $stmt->bindParam(':naturalidade', $pacientes['nome']);
-        $stmt->bindParam(':nacionalidade', $pacientes['nome']);
-        $stmt->bindParam(':email', $pacientes['nome']);
-        $stmt->bindParam(':telefone', $pacientes['nome']);
-        $stmt->bindParam(':telefone_trabalho', $pacientes['nome']);
-        $stmt->bindParam(':nome_pai', $pacientes['nome']);
-        $stmt->bindParam(':nome_mae', $pacientes['nome']);
-        $stmt->bindParam(':tipo_sangue', $pacientes['nome']);
-        $stmt->bindParam(':nome', $pacientes['nome']);
+        $stmt->bindParam(':cidades', $pacientes['cidades']);
+        $stmt->bindParam(':estado', $pacientes['estado']);
+        $stmt->bindParam(':cep', $pacientes['cep']);
+        $stmt->bindParam(':complemento', $pacientes['complemento']);
+        $stmt->bindParam(':cpf', $pacientes['cpf']);
+        $stmt->bindParam(':rg', $pacientes['rg']);
+        $stmt->bindParam(':data_nascimento', $pacientes['data_nascimento']);
+        $stmt->bindParam(':naturalidade', $pacientes['naturalidade']);
+        $stmt->bindParam(':nacionalidade', $pacientes['nacionalidade']);
+        $stmt->bindParam(':email', $pacientes['email']);
+        $stmt->bindParam(':telefone', $pacientes['telefone']);
+        $stmt->bindParam(':telefone_trabalho', $pacientes['telefone_trabalho']);
+        $stmt->bindParam(':nome_pai', $pacientes['nome_pai']);
+        $stmt->bindParam(':nome_mae', $pacientes['nome_mae']);
+        $stmt->bindParam(':tipo_sangue', $pacientes['tipo_sangue']);
 
         if ($stmt->execute()) {
             return true;
@@ -237,7 +236,7 @@ class Pacientes
 
         // remove do banco
         $DB = new DB;
-        $sql = "DELETE FROM Medicos WHERE id = :id";
+        $sql = "DELETE FROM Paci WHERE id = :id";
         $stmt = $DB->prepare($sql);
         $stmt->bindParam(':id', $id, \PDO::PARAM_INT);
 

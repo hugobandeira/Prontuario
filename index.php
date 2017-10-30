@@ -137,7 +137,7 @@ $route->group('/pacientes', function () use ($route) {
     });
     $route->get('/delete/{id}', function ($request) {
         $id = $request->getAttribute('id');
-        $Pacientes = new \App\Controllers\PacientesController();
+        $Pacientes = new  \App\Controllers\PacientesController();
         $Pacientes->delete($id);
     });
 

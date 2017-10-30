@@ -22,10 +22,10 @@
                             <thead>
                             <tr>
                                 <th>ID</th>
-                                <th>Nome</th>
+                                <th width="300">Nome</th>
                                 <th>Endereço</th>
                                 <th>Cidade</th>
-                                <th>Ações</th>
+                                <th width="150">Ações</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -47,7 +47,7 @@
                                                 </div>
                                             </a>
                                             <a class="btn btn-fill btn-sm btn-danger"
-                                               href="/paciente/delete/<?php echo $paciente['id']; ?>"
+                                               href="/pacientes/delete/<?php echo $paciente['id']; ?>"
                                                onclick="return confirm('Tem certeza de que deseja remover?');">
                                                 <strong> Deletar</strong>
                                             </a>

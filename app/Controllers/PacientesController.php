@@ -57,13 +57,16 @@ class PacientesController
     {
         $paciente = $_POST;
         if (Pacientes::update($paciente)) {
-            header('Location: http://localhost:8000/pacientes', ['msg']);
+            header('Location: http://localhost:8000/pacientes');
             exit;
         };
     }
 
     public function delete($id)
     {
-        //
+        if (Pacientes::remove($id)) {
+            header('Location: http://localhost:8000/pacientes');
+            exit;
+        }
     }
 }
