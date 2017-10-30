@@ -3,51 +3,36 @@
 <div class="content">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-8">
+            <div class="col-md-12">
                 <div class="card">
                     <div class="header">
-                        <h4 class="title">Cadastro de Medicos</h4>
+                        <h4 class="title">Cadastro de Pacientes</h4>
                     </div>
                     <div class="content">
-                        <form method="post" action="/medicos/add">
+                        <form method="post" action="/pacientes/edit">
                             <div class="row">
-                                <div class="col-md-5">
+                                <div class="col-md-12">
                                     <div class="form-group">
-                                        <label>CRM</label>
-                                        <input name="crm" type="text" class="form-control"
-                                               placeholder="Conselho Regional de Medicina do Maranhão">
+                                        <input type="hidden" name="id" value="<?= $paciente['id'] ?>">
+                                        <label>NOME COMPLETO</label>
+                                        <input type="text" name="nome" required class="form-control"
+                                               value="<?= $paciente['nome'] ?>">
                                     </div>
                                 </div>
-                                <div class="col-md-3">
+                            </div>
+                            <div class="row">
+                                <div class="col-md-8">
                                     <div class="form-group">
-                                        <label>Username</label>
-                                        <input type="text" class="form-control" placeholder="Username">
+                                        <label>Endereço</label>
+                                        <input type="text" name="endereco" class="form-control"
+                                               value="<?= $paciente['endereco'] ?>">
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label for="exampleInputEmail1">Email address</label>
-                                        <input type="email" name="email" class="form-control" placeholder="Email">
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label>NOME COMPLETO</label>
-                                        <input type="text" name="nome" required class="form-control"
-                                               placeholder="João da silva Ex:...">
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label>Endereço</label>
-                                        <input type="text" name="endereco" class="form-control"
-                                               placeholder="Rua Exemplo 90">
+                                        <label>Complemento</label>
+                                        <input type="text" name="complemento" class="form-control"
+                                               value="<?= $paciente['complemento'] ?>">
                                     </div>
                                 </div>
                             </div>
@@ -56,19 +41,22 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>Bairro</label>
-                                        <input type="text" name="bairro" class="form-control" placeholder="Bairro">
+                                        <input type="text" name="bairro" class="form-control"
+                                               value="<?= $paciente['bairro'] ?>">
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>Cidade</label>
-                                        <input type="text" name="cidade" class="form-control" placeholder="Cidade">
+                                        <input type="text" name="cidades" class="form-control"
+                                               value="<?= $paciente['cidades'] ?>">
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>Estado</label>
-                                        <input type="text" name="estado" class="form-control" placeholder="Estado">
+                                        <input type="text" name="estado" class="form-control"
+                                               value="<?= $paciente['estado'] ?>">
                                     </div>
                                 </div>
                             </div>
@@ -76,14 +64,15 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>Cep</label>
-                                        <input type="text" name="cep" class="form-control" placeholder="65900-000">
+                                        <input type="text" name="cep" class="form-control"
+                                               value="<?= $paciente['cep'] ?>">
                                     </div>
                                 </div>
                                 <div class="col-md-8">
                                     <div class="form-group">
-                                        <label>Complemento</label>
-                                        <input type="text" name="complemento" class="form-control"
-                                               placeholder="Casa e lote" value="">
+                                        <label for="email">Email</label>
+                                        <input type="email" name="email" class="form-control"
+                                               value="<?= $paciente['email'] ?>">
                                     </div>
                                 </div>
                             </div>
@@ -91,20 +80,22 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>CPF</label>
-                                        <input type="text" name="cpf" class="form-control" placeholder="000.000.000-00">
+                                        <input type="text" required name="cpf" class="form-control"
+                                               value="<?= $paciente['cpf'] ?>">
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>RG</label>
-                                        <input type="text" name="rg" class="form-control" placeholder="000.000.0000-0">
+                                        <input type="text" required name="rg" class="form-control"
+                                               value="<?= $paciente['rg'] ?>">
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>DATA NASCIMENTO</label>
-                                        <input type="date" name="data_nascimento" class="form-control"
-                                               placeholder="00/00/00">
+                                        <input type="date" required name="data_nascimento" class="form-control"
+                                               value="<?= $paciente['data_nascimento'] ?>">
                                     </div>
                                 </div>
                             </div>
@@ -113,38 +104,48 @@
                                     <div class="form-group">
                                         <label>Naturalidade</label>
                                         <input type="text" name="naturalidade" class="form-control"
-                                               placeholder="Ex: Brasileiro">
+                                               value="<?= $paciente['naturalidade'] ?>">
                                     </div>
                                 </div>
-                                <div class="col-md-8">
+                                <div class="col-md-4">
                                     <div class="form-group">
                                         <label>Nacionalidade:</label>
-                                        <input type="text" name="nacionalidade" class="form-control">
+                                        <input type="text" name="nacionalidade" class="form-control"
+                                               value="<?= $paciente['nacionalidade'] ?>">
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>TELEFONE CELULAR</label>
+                                        <input type="number" name="telefone" class="form-control"
+                                               value="<?= $paciente['telefone'] ?>">
                                     </div>
                                 </div>
                             </div>
-
                             <div class="row">
                                 <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label>Telefone</label>
-                                        <input type="number" name="telefone" class="form-control"
-                                               placeholder="(99) 9 9999-9999">
-                                    </div>
+                                    <label>NOME DO PAI</label>
+                                    <input type="text" name="nome_pai" class="form-control" value="<?= $paciente['nome_pai'] ?>">
+                                </div>
+                                <div class="col-md-4">
+                                    <label>NOME DA MÃE</label>
+                                    <input type="text" name="nome_mae" class="form-control" value="<?= $paciente['nome_mae'] ?>">
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label>Celular</label>
-                                        <input type="number" name="nacionalidade" class="form-control"
-                                               placeholder="(99) 9 9999-9999">
+                                        <label for="telefone_trabalho">TELEFONE TRABALHO</label>
+                                        <input type="number" name="telefone_trabalho" class="form-control"
+                                               value="<?= $paciente['telefone_trabalho'] ?>">
                                     </div>
                                 </div>
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label>Trabalho</label>
-                                        <input type="text" name="trabalho" class="form-control">
-                                    </div>
+                                <div class="col-md-1">
+                                    <label>TIPO SANGUÍNEO</label>
+                                    <input type="text" name="tipo_sangue" class="form-control"
+                                           value="<?= $paciente['tipo_sangue'] ?>">
                                 </div>
+                            </div>
+                            <div class="row">
+
                             </div>
                             <button type="submit" class="btn btn-info btn-fill pull-right">Salvar</button>
                             <div class="clearfix"></div>
@@ -152,47 +153,13 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-4">
-                <div class="card card-user">
-                    <div class="image">
-                        <img src="https://ununsplash.imgix.net/photo-1431578500526-4d9613015464?fit=crop&amp;fm=jpg&amp;h=300&amp;q=75&amp;w=400"
-                             alt="...">
-                    </div>
-                    <div class="content">
-                        <div class="author">
-                            <a href="#">
-                                <img class="avatar border-gray" src="/public_html/img/faces/face-3.jpg" alt="...">
-
-                                <h4 class="title">Mike Andrew<br>
-                                    <small>michael24</small>
-                                </h4>
-                            </a>
-                        </div>
-                        <p class="description text-center"> "Lamborghini Mercy <br>
-                            Your chick she so thirsty <br>
-                            I'm in that two seat Lambo"
-                        </p>
-                    </div>
-                    <hr>
-                    <div class="text-center">
-                        <button href="#" class="btn btn-simple"><i class="fa fa-facebook-square"></i></button>
-                        <button href="#" class="btn btn-simple"><i class="fa fa-twitter"></i></button>
-                        <button href="#" class="btn btn-simple"><i class="fa fa-google-plus-square"></i></button>
-
-                    </div>
-                </div>
-            </div>
-
         </div>
     </div>
 </div>
 <script src="/public_html/js/jquery-3.2.1.min.js"></script>
 <script>
-    $('#medicos').addClass('active')
+    $('#pacientes').addClass('active')
 </script>
+
+
 <?php include __DIR__ . "/../../layouts/rodape.php"; ?>
-
-
-
-
-

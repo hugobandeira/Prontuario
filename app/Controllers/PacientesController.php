@@ -18,7 +18,9 @@ class PacientesController
     public function index()
     {
         if ($_SESSION['nivel'] == 1 || $_SESSION['nivel'] == 2) {
-            \App\View::make('/admin/pacientes/index');
+            $pacientes = Pacientes::selectAll();
+
+            \App\View::make('/admin/pacientes/index', compact('pacientes'));
 
         } else {
             header('location: /');
@@ -44,14 +46,20 @@ class PacientesController
 
     }
 
-    public function show()
+    public function show($id)
     {
-        //
+        $paciente = Pacientes::selectAll($id)[0];
+        \App\View::make('/admin/pacientes/edit', compact('paciente'));
+
     }
 
     public function update()
     {
-        //
+        $paciente = $_POST;
+        if (Pacientes::update($paciente)) {
+            header('Location: http://localhost:8000/pacientes', ['msg']);
+            exit;
+        };
     }
 
     public function delete($id)

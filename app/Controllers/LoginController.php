@@ -13,7 +13,7 @@ class LoginController
 
     public function index()
     {
-        var_dump($_SESSION);
+        //var_dump($_SESSION);
         if (isset($_SESSION['nome'])) {
             header('location: /home');
             exit();

@@ -1,5 +1,4 @@
-
-<?php include __DIR__."/../../layouts/cabecalho.php";?>
+<?php include __DIR__ . "/../../layouts/cabecalho.php"; ?>
 <div class="content">
     <div class="container-fluid">
         <div class="row">
@@ -30,17 +29,18 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <tr>
-                                <?php if (isset($pacientes)) {
-                                    foreach ($pacientes as $paciente) {
-                                        ?>
-                                        <td>1</td>
-                                        <td>Jackson Hugo</td>
-                                        <td>Rua Coronel manuel B.</td>
-                                        <td>Imperatriz</td>
+
+                            <?php if (isset($pacientes)) {
+                                foreach ($pacientes as $paciente) {
+                                    ?>
+                                    <tr>
+                                        <td><?= $paciente['id'] ?></td>
+                                        <td><?= $paciente['nome'] ?></td>
+                                        <td><?= $paciente['endereco'] ?></td>
+                                        <td><?= $paciente['cidades'] ?></td>
                                         <td>
                                             <a class="btn btn-fill btn-sm btn-default"
-                                               href="/paciente/edit/<?php echo $paciente['id']; ?>">
+                                               href="/pacientes/edit/<?php echo $paciente['id']; ?>">
                                                 <div class="font-icon-detail">
                                                     <!--<i class="pe-7s-pen"></i>-->
                                                     <strong>Editar</strong>
@@ -52,9 +52,10 @@
                                                 <strong> Deletar</strong>
                                             </a>
                                         </td>
-                                    <?php }
-                                }; ?>
-                            </tr>
+                                    </tr>
+                                <?php }
+                            }; ?>
+
                             </tbody>
                         </table>
 
@@ -68,4 +69,4 @@
 <script>
     $('#pacientes').addClass('active');
 </script>
-<?php include __DIR__."/../../layouts/rodape.php";?>
+<?php include __DIR__ . "/../../layouts/rodape.php"; ?>

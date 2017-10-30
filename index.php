@@ -126,6 +126,20 @@ $route->group('/pacientes', function () use ($route) {
         $Pacientes = new \App\Controllers\PacientesController();
         $Pacientes->store();
     });
+    $route->get('/edit/{id}', function ($request) {
+        $id = $request->getAttribute('id');
+        $Pacientes = new \App\Controllers\PacientesController();
+        $Pacientes->show($id);
+    });
+    $route->post('/edit', function ($request) {
+        $Pacientes = new \App\Controllers\PacientesController();
+        $Pacientes->update();
+    });
+    $route->get('/delete/{id}', function ($request) {
+        $id = $request->getAttribute('id');
+        $Pacientes = new \App\Controllers\PacientesController();
+        $Pacientes->delete($id);
+    });
 
 });
 return $route->run();

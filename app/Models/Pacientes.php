@@ -19,7 +19,7 @@ class Pacientes
         if (!empty($id)) {
             $where = 'WHERE id = :id';
         }
-        $sql = sprintf("SELECT * FROM Pacientes %s ORDER BY id ASC", $where);
+        $sql = sprintf("SELECT * FROM Paci %s ORDER BY id ASC", $where);
 
         $DB = new DB;
         $stmt = $DB->prepare($sql);
@@ -143,68 +143,89 @@ class Pacientes
     /**
      * Altera no banco de dados um usuário
      */
-    public static function update($medico)
+    public static function update($pacientes)
     {
         // validação (bem simples, só pra evitar dados vazios)
-        if (empty($medico)) {
+        if (empty($pacientes)) {
             echo "Volte e preencha todos os campos";
             return false;
         }
-
         // a data vem no formato dd/mm/YYYY
         // então precisamos converter para YYYY-mm-dd
-        //$isoDate = dateConvert($birthdate);
+        $isoDate = dateConvert($pacientes['data_nascimento']);
 
         // insere no banco
         $DB = new DB;
 
+//        nome` varchar(45) NOT NULL,
+//  `endereco` varchar(105) DEFAULT NULL,
+//  `bairro` varchar(45) DEFAULT NULL,
+//  `cidades` varchar(45) DEFAULT NULL,
+//  `estado` varchar(45) DEFAULT NULL,
+//  `cep` varchar(45) DEFAULT NULL,
+//  `complemento` varchar(45) DEFAULT NULL,
+//  `cpf` int(11) NOT NULL,
+//  `rg` int(11) NOT NULL,
+//  `data_nascimento` date NOT NULL,
+//  `naturalidade` varchar(45) DEFAULT NULL,
+//  `nacionalidade` varchar(45) DEFAULT NULL,
+//  `email` varchar(45) DEFAULT NULL,
+//  `telefone` int(11) DEFAULT NULL,
+//  `telefone_trabalho` int(11) DEFAULT NULL,
+//  `nome_pai` varchar(45) DEFAULT NULL,
+//  `nome_mae` varchar(45) DEFAULT NULL,
+//  `tipo_sangue` varchar(45) NOT NULL
 
-        $sql = "UPDATE Medicos SET 
-                        crm = :crm,
-                        email = :email,
-                        nome = :nome,
-                        endereco = :endereco,
-                        bairro = :bairro,
-                        cidade =:cidade,
-                        estado = :estado, 
-                        cep = :cep, 
-                        complemento = :complemento, 
-                        cpf = :cpf,
-                        rg = :rg,
-                        data_nascimento = :data_nascimento,
-                        naturalidade = :naturalidade,
-                        nacionalidade = :nacionalidade,
-                        telefone = :telefone,  
-                        celular = :celular, 
-                        trabalho =:trabalho WHERE id = {$medico['id']}";
+        $sql = "UPDATE Paci SET 
+                            nome = :nome, 
+                            endereco = :endereco,
+                            bairro = :bairro,
+                            cidades = :cidades,
+                            estado = :estado,
+                            cep = :cep,
+                            complemento = :complemento,
+                            cpf = :cpf,
+                            rg = :rg,
+                            data_nascimento = :data_nascimento,
+                            naturalidade = :naturalidade,
+                            nacionalidade = :nacionalidade,
+                            email = :email,
+                            telefone = :telefone,
+                            telefone_trabalho = :telefone_trabalho,
+                            nome_pai = :nome_pai,
+                            nome_mae = :nome_mae,
+                            tipo_sangue = :tipo_sangue WHERE id = {$pacientes['id']}";
+
         $stmt = $DB->prepare($sql);
-        $stmt->bindParam(':crm', $medico['crm']);
-        $stmt->bindParam(':email', $medico['email']);
-        $stmt->bindParam(':nome', $medico['nome']);
-        $stmt->bindParam(':endereco', $medico['endereco']);
-        $stmt->bindParam(':bairro', $medico['bairro']);
-        $stmt->bindParam(':cidade', $medico['cidade']);
-        $stmt->bindParam(':estado', $medico['estado']);
-        $stmt->bindParam(':cep', $medico['cep']);
-        $stmt->bindParam(':cpf', $medico['cpf']);
-        $stmt->bindParam(':rg', $medico['rg']);
-        $stmt->bindParam(':complemento', $medico['complemento']);
-        $stmt->bindParam(':data_nascimento', $medico['data_nascimento']);
-        $stmt->bindParam(':naturalidade', $medico['naturalidade']);
-        $stmt->bindParam(':nacionalidade', $medico['nacionalidade']);
-        $stmt->bindParam(':telefone', $medico['telefone']);
-        $stmt->bindParam(':celular', $medico['celular']);
-        $stmt->bindParam(':trabalho', $medico['trabalho']);
+
+        $stmt->bindParam(':nome', $pacientes['nome']);
+        $stmt->bindParam(':endereco', $pacientes['endereco']);
+        $stmt->bindParam(':bairro', $pacientes['bairro']);
+        $stmt->bindParam(':cidades', $pacientes['nome']);
+        $stmt->bindParam(':estado', $pacientes['nome']);
+        $stmt->bindParam(':cep', $pacientes['nome']);
+        $stmt->bindParam(':complemento', $pacientes['nome']);
+        $stmt->bindParam(':cpf', $pacientes['nome']);
+        $stmt->bindParam(':rg', $pacientes['nome']);
+        $stmt->bindParam(':data_nascimento', $pacientes['nome']);
+        $stmt->bindParam(':naturalidade', $pacientes['nome']);
+        $stmt->bindParam(':nacionalidade', $pacientes['nome']);
+        $stmt->bindParam(':email', $pacientes['nome']);
+        $stmt->bindParam(':telefone', $pacientes['nome']);
+        $stmt->bindParam(':telefone_trabalho', $pacientes['nome']);
+        $stmt->bindParam(':nome_pai', $pacientes['nome']);
+        $stmt->bindParam(':nome_mae', $pacientes['nome']);
+        $stmt->bindParam(':tipo_sangue', $pacientes['nome']);
+        $stmt->bindParam(':nome', $pacientes['nome']);
+
         if ($stmt->execute()) {
             return true;
-
         } else {
             echo "Erro ao cadastrar";
             print_r($stmt->errorInfo());
             return false;
         }
     }
-
 
     public static function remove($id)
     {
