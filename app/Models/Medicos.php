@@ -58,7 +58,7 @@ class Medicos
                         nome,
                         endereco,
                         bairro,
-                        cidade,
+                        cidade_id,
                         estado, 
                         cep, 
                         complemento, 
@@ -69,7 +69,9 @@ class Medicos
                         nacionalidade,
                         telefone,  
                         celular,
-                        trabalho) 
+                        trabalho, 
+                        especialidade_id
+                        ) 
                     VALUES(
                         :crm,
                         :email,
@@ -87,7 +89,8 @@ class Medicos
                         :nacionalidade,
                         :telefone,  
                         :celular,  
-                        :trabalho)";
+                        :trabalho,
+                        :especialidade_id)";
 
 
         $stmt = $DB->prepare($sql);

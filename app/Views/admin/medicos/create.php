@@ -3,7 +3,7 @@
 <div class="content">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-8">
+            <div class="col-md-12">
                 <div class="card">
                     <div class="header">
                         <h4 class="title">Cadastro de Medicos</h4>
@@ -62,13 +62,25 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>Cidade</label>
-                                        <input type="text" name="cidade" class="form-control" placeholder="Cidade">
+                                        <select name="cidade" class="form-control">
+                                            <option selected disabled>Selecione uma cidade</option>
+                                            <?php foreach ($cidades as $cidade) { ?>
+                                                <option value="<?= $cidade['id'] ?>"><?= $cidade['nome'] ?>
+                                                    - <?= $cidade['uf'] ?> </option>
+                                            <?php } ?>
+                                        </select>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label>Estado</label>
-                                        <input type="text" name="estado" class="form-control" placeholder="Estado">
+                                        <label>Especialidade</label>
+                                        <select name="especialidade" class="form-control">
+                                            <option selected disabled>Sua </option>
+                                            <?php foreach ($cidades as $cidade) { ?>
+                                                <option value="<?= $cidade['id'] ?>"><?= $cidade['nome'] ?>
+                                                    - <?= $cidade['uf'] ?> </option>
+                                            <?php } ?>
+                                        </select>
                                     </div>
                                 </div>
                             </div>
@@ -103,7 +115,8 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>DATA NASCIMENTO</label>
-                                        <input type="date" name="data_nascimento" class="form-control" placeholder="00/00/00">
+                                        <input type="date" name="data_nascimento" class="form-control"
+                                               placeholder="00/00/00">
                                     </div>
                                 </div>
                             </div>
@@ -151,36 +164,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-4">
-                <div class="card card-user">
-                    <div class="image">
-                        <img src="https://ununsplash.imgix.net/photo-1431578500526-4d9613015464?fit=crop&amp;fm=jpg&amp;h=300&amp;q=75&amp;w=400"
-                             alt="...">
-                    </div>
-                    <div class="content">
-                        <div class="author">
-                            <a href="#">
-                                <img class="avatar border-gray" src="/public_html/img/faces/face-3.jpg" alt="...">
 
-                                <h4 class="title">Mike Andrew<br>
-                                    <small>michael24</small>
-                                </h4>
-                            </a>
-                        </div>
-                        <p class="description text-center"> "Lamborghini Mercy <br>
-                            Your chick she so thirsty <br>
-                            I'm in that two seat Lambo"
-                        </p>
-                    </div>
-                    <hr>
-                    <div class="text-center">
-                        <button href="#" class="btn btn-simple"><i class="fa fa-facebook-square"></i></button>
-                        <button href="#" class="btn btn-simple"><i class="fa fa-twitter"></i></button>
-                        <button href="#" class="btn btn-simple"><i class="fa fa-google-plus-square"></i></button>
-
-                    </div>
-                </div>
-            </div>
 
         </div>
     </div>

@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Models\Cidades;
 use App\Models\Medicos;
 use App\Controllers\LoginController;
 
@@ -31,7 +32,8 @@ class MedicosController
 
     public function create()
     {
-        \App\View::make('/admin/medicos/create');
+        $cidades = Cidades::all();
+        \App\View::make('/admin/medicos/create', ['cidades' => $cidades]);
     }
 
     public function store()
@@ -39,6 +41,8 @@ class MedicosController
 //        Não será permitido cadastros com mesmo CPF e RG.
 //        Se não cidades e especialidades cadastradas não poderá concluir o cadastro do médico
         $medico = $_POST;
+        var_dump($medico['cidade']);
+        die();
         if (Medicos::save($medico)) {
             header('location: /medicos');
             exit();
