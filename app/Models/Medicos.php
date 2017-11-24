@@ -59,7 +59,6 @@ class Medicos
                         endereco,
                         bairro,
                         cidade_id,
-                        estado, 
                         cep, 
                         complemento, 
                         cpf,
@@ -69,7 +68,7 @@ class Medicos
                         nacionalidade,
                         telefone,  
                         celular,
-                        trabalho, 
+                        trabalho,
                         especialidade_id
                         ) 
                     VALUES(
@@ -78,8 +77,7 @@ class Medicos
                         :nome,
                         :endereco,
                         :bairro,
-                        :cidade,
-                        :estado, 
+                        :cidade_id,
                         :cep, 
                         :complemento, 
                         :cpf,
@@ -99,8 +97,7 @@ class Medicos
         $stmt->bindParam(':nome', $medico['nome']);
         $stmt->bindParam(':endereco', $medico['endereco']);
         $stmt->bindParam(':bairro', $medico['bairro']);
-        $stmt->bindParam(':cidade', $medico['cidade']);
-        $stmt->bindParam(':estado', $medico['estado']);
+        $stmt->bindParam(':cidade_id', $medico['cidade_id']);
         $stmt->bindParam(':cep', $medico['cep']);
         $stmt->bindParam(':cpf', $medico['cpf']);
         $stmt->bindParam(':rg', $medico['rg']);
@@ -111,6 +108,7 @@ class Medicos
         $stmt->bindParam(':telefone', $medico['telefone']);
         $stmt->bindParam(':celular', $medico['celular']);
         $stmt->bindParam(':trabalho', $medico['trabalho']);
+        $stmt->bindParam(':especialidade_id', $medico['especialidade_id']);
 
         if ($stmt->execute()) {
             return true;
@@ -142,14 +140,32 @@ class Medicos
         $DB = new DB;
 
 
+//        crm,
+//                        email,
+//                        nome,
+//                        endereco,
+//                        bairro,
+//                        cidade_id,
+//                        cep,
+//                        complemento,
+//                        cpf,
+//                        rg,
+//                        data_nascimento ,
+//                        naturalidade,
+//                        nacionalidade,
+//                        telefone,
+//                        celular,
+//                        trabalho,
+//                        especialidade_id
+
+
         $sql = "UPDATE Medicos SET 
                         crm = :crm,
                         email = :email,
                         nome = :nome,
                         endereco = :endereco,
                         bairro = :bairro,
-                        cidade =:cidade,
-                        estado = :estado, 
+                        cidade_id =:cidade_id,
                         cep = :cep, 
                         complemento = :complemento, 
                         cpf = :cpf,
@@ -159,15 +175,16 @@ class Medicos
                         nacionalidade = :nacionalidade,
                         telefone = :telefone,  
                         celular = :celular, 
-                        trabalho =:trabalho WHERE id = {$medico['id']}";
+                        trabalho =:trabalho,
+                        especialidade_id = :especialidade_id WHERE id = {$medico['id']}";
+
         $stmt = $DB->prepare($sql);
         $stmt->bindParam(':crm', $medico['crm']);
         $stmt->bindParam(':email', $medico['email']);
         $stmt->bindParam(':nome', $medico['nome']);
         $stmt->bindParam(':endereco', $medico['endereco']);
         $stmt->bindParam(':bairro', $medico['bairro']);
-        $stmt->bindParam(':cidade', $medico['cidade']);
-        $stmt->bindParam(':estado', $medico['estado']);
+        $stmt->bindParam(':cidade_id', $medico['cidade_id']);
         $stmt->bindParam(':cep', $medico['cep']);
         $stmt->bindParam(':cpf', $medico['cpf']);
         $stmt->bindParam(':rg', $medico['rg']);
@@ -178,6 +195,8 @@ class Medicos
         $stmt->bindParam(':telefone', $medico['telefone']);
         $stmt->bindParam(':celular', $medico['celular']);
         $stmt->bindParam(':trabalho', $medico['trabalho']);
+        $stmt->bindParam(':especialidade_id', $medico['especialidade_id']);
+
         if ($stmt->execute()) {
             return true;
 

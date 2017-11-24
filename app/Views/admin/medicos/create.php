@@ -62,7 +62,7 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>Cidade</label>
-                                        <select name="cidade" class="form-control">
+                                        <select name="cidade_id" class="form-control">
                                             <option selected disabled>Selecione uma cidade</option>
                                             <?php foreach ($cidades as $cidade) { ?>
                                                 <option value="<?= $cidade['id'] ?>"><?= $cidade['nome'] ?>
@@ -74,12 +74,9 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>Especialidade</label>
-                                        <select name="especialidade" class="form-control">
+                                        <select name="especialidade_id" class="form-control">
                                             <option selected disabled>Sua </option>
-                                            <?php foreach ($cidades as $cidade) { ?>
-                                                <option value="<?= $cidade['id'] ?>"><?= $cidade['nome'] ?>
-                                                    - <?= $cidade['uf'] ?> </option>
-                                            <?php } ?>
+                                            <option value="1">Cirugião</option>
                                         </select>
                                     </div>
                                 </div>

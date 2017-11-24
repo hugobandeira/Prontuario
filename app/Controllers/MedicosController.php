@@ -41,8 +41,7 @@ class MedicosController
 //        Não será permitido cadastros com mesmo CPF e RG.
 //        Se não cidades e especialidades cadastradas não poderá concluir o cadastro do médico
         $medico = $_POST;
-        var_dump($medico['cidade']);
-        die();
+
         if (Medicos::save($medico)) {
             header('location: /medicos');
             exit();
@@ -55,7 +54,8 @@ class MedicosController
     public function show($id)
     {
         $medico = Medicos::selectAll($id)[0];
-        \App\View::make('/admin/medicos/edit', ['medico' => $medico]);
+        $cidades = Cidades::all();
+        \App\View::make('/admin/medicos/edit', ['medico' => $medico, 'cidades' => $cidades]);
 
     }
 
