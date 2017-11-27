@@ -39,7 +39,7 @@
                                             <td><?= $medico['nome'] ?></td>
                                             <td><?= $medico['email'] ?></td>
                                             <td><?= $medico['telefone'] ?></td>
-                                            <td><?= $medico['cidade'] ?></td>
+                                            <td><?= $medico['cidade_id'] ?></td>
 
                                             <td>
                                                 <a class="btn btn-fill btn-sm btn-default"

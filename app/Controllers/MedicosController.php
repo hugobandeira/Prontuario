@@ -63,7 +63,7 @@ class MedicosController
     {
         $medico = $_POST;
         if (Medicos::update($medico)) {
-            header('Location: http://localhost:8000/medicos');
+            header('Location: /medicos');
             exit;
         };
 

@@ -139,26 +139,6 @@ class Medicos
         // insere no banco
         $DB = new DB;
 
-
-//        crm,
-//                        email,
-//                        nome,
-//                        endereco,
-//                        bairro,
-//                        cidade_id,
-//                        cep,
-//                        complemento,
-//                        cpf,
-//                        rg,
-//                        data_nascimento ,
-//                        naturalidade,
-//                        nacionalidade,
-//                        telefone,
-//                        celular,
-//                        trabalho,
-//                        especialidade_id
-
-
         $sql = "UPDATE Medicos SET 
                         crm = :crm,
                         email = :email,
