@@ -18,17 +18,13 @@ class MedicoController
      */
     public function index()
     {
+        if ($_SESSION['nivel'] == '2') {
 
-        \App\View::make('/admin/medico/index');
-        exit();
-//        if ($_SESSION['nivel'] == '2') {
-//            $medicos = array(Medicos::selectAll());
-//            \App\View::make('/admin/medico/index');
-//
-//        } else {
-//            header('location: /home');
-//            exit();
-//        }
+            \App\View::make('/admin/medico/index');
+        } else {
+            header('location: /home');
+            exit();
+        }
 
     }
 

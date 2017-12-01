@@ -36,7 +36,7 @@ class LoginController
                 header('location: /home');
                 exit;
             } elseif ($user['nivel'] == '2') {
-                header('location: /pacientes');
+                header('location: /medico');
                 exit();
             } elseif ($user['nivel'] == '3') {
                 header('location: /agendamentos');
