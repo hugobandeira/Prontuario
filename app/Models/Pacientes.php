@@ -34,6 +34,27 @@ class Pacientes
         return $medicos;
     }
 
+    public static function all($id = null)
+    {
+        $where = '';
+        if (!empty($id)) {
+            $where = 'WHERE id = :id';
+        }
+        $sql = sprintf("SELECT Paci.*, cidades.nome as cida FROM Paci INNER JOIN cidades ON Paci.cidade_id = cidades.id %s ORDER BY id ASC", $where);
+
+        $DB = new DB;
+        $stmt = $DB->prepare($sql);
+
+        if (!empty($where)) {
+            $stmt->bindParam(':id', $id, \PDO::PARAM_INT);
+        }
+
+        $stmt->execute();
+
+        $medicos = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+        return $medicos;
+    }
+
 
     /**
      * Salva no banco de dados um novo usuário
@@ -75,7 +96,7 @@ class Pacientes
                             nome, 
                             endereco,
                             bairro,
-                            cidades,
+                            cidade_id,
                             estado,
                             cep,
                             complemento,
@@ -95,7 +116,7 @@ class Pacientes
                             :nome, 
                             :endereco,
                             :bairro,
-                            :cidades,
+                            :cidade_id,
                             :estado,
                             :cep,
                             :complemento,
@@ -114,7 +135,7 @@ class Pacientes
         $stmt->bindParam(':nome', $pacientes['nome']);
         $stmt->bindParam(':endereco', $pacientes['endereco']);
         $stmt->bindParam(':bairro', $pacientes['bairro']);
-        $stmt->bindParam(':cidades', $pacientes['cidades']);
+        $stmt->bindParam(':cidade_id', $pacientes['cidade_id']);
         $stmt->bindParam(':estado', $pacientes['estado']);
         $stmt->bindParam(':cep', $pacientes['cep']);
         $stmt->bindParam(':complemento', $pacientes['complemento']);
@@ -180,7 +201,7 @@ class Pacientes
                             nome = :nome, 
                             endereco = :endereco,
                             bairro = :bairro,
-                            cidades = :cidades,
+                            cidade_id = :cidade_id,
                             estado = :estado,
                             cep = :cep,
                             complemento = :complemento,
@@ -201,7 +222,7 @@ class Pacientes
         $stmt->bindParam(':nome', $pacientes['nome']);
         $stmt->bindParam(':endereco', $pacientes['endereco']);
         $stmt->bindParam(':bairro', $pacientes['bairro']);
-        $stmt->bindParam(':cidades', $pacientes['cidades']);
+        $stmt->bindParam(':cidade_id', $pacientes['cidade_id']);
         $stmt->bindParam(':estado', $pacientes['estado']);
         $stmt->bindParam(':cep', $pacientes['cep']);
         $stmt->bindParam(':complemento', $pacientes['complemento']);

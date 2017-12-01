@@ -1,4 +1,4 @@
-<?php include __DIR__ . "/../../layouts/cabecalho.php" ?>
+<?php include __DIR__ . "/../../layouts/cabecalho-medico.php" ?>
     <div class="content">
         <div class="container-fluid">
             <div class="row">

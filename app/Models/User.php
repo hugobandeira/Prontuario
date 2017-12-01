@@ -19,7 +19,7 @@ class User
         if (!empty($id)) {
             $where = 'WHERE id = :id';
         }
-        $sql = sprintf("SELECT id, email, gender, birthdate FROM users %s ORDER BY name ASC", $where);
+        $sql = sprintf("SELECT id, email, senha, senha FROM users %s ORDER BY name ASC", $where);
         $DB = new DB;
         $stmt = $DB->prepare($sql);
 
@@ -52,7 +52,7 @@ class User
 
         // insere no banco
         $DB = new DB;
-        $sql = "INSERT INTO users(name, email, gender, birthdate) VALUES(:name, :email, :gender, :birthdate)";
+        $sql = "INSERT INTO users(name, email, senha ) VALUES(:name , :email, :senha)";
         $stmt = $DB->prepare($sql);
         $stmt->bindParam(':name', $name);
         $stmt->bindParam(':email', $email);
@@ -68,6 +68,59 @@ class User
         }
     }
 
+    public static function medico($medico)
+    {
+        // validação (bem simples, só pra evitar dados vazios)
+        if (empty($medico)) {
+            echo "Volte e preencha todos os campos";
+            return false;
+        }
+
+        $senha = md5('admin123');
+
+        // insere no banco
+        $DB = new DB;
+        $sql = "INSERT INTO users(name, email, senha ) VALUES(:name , :email, :senha)";
+        $stmt = $DB->prepare($sql);
+        $stmt->bindParam(':name', $medico['nome']);
+        $stmt->bindParam(':email', $medico['email']);
+        $stmt->bindParam(':senha', $senha);
+
+        if ($stmt->execute()) {
+            return true;
+        } else {
+            echo "Erro ao cadastrar";
+            print_r($stmt->errorInfo());
+            return false;
+        }
+    }
+
+
+    public static function medicoUpdate($medico)
+    {
+        // validação (bem simples, só pra evitar dados vazios)
+        if (empty($medico)) {
+            echo "Volte e preencha todos os campos";
+            return false;
+        }
+
+        // insere no banco
+        $DB = new DB;
+        $sql = "UPDATE users SET name = :name, email = :email WHERE id = :id";
+
+        $stmt = $DB->prepare($sql);
+        $stmt->bindParam(':name', $medico['nome']);
+        $stmt->bindParam(':email', $medico['email']);
+        $stmt->bindParam(':id', $medico['id'], \PDO::PARAM_INT);
+
+        if ($stmt->execute()) {
+            return true;
+        } else {
+            echo "Erro ao cadastrar";
+            print_r($stmt->errorInfo());
+            return false;
+        }
+    }
 
     /**
      * Altera no banco de dados um usuário

@@ -71,17 +71,26 @@ $route->group('/user', function () use ($route) {
     });
 // processa o formulário de edição
     $route->post('/edit', function () {
-        $UsersController = new \App\Controllers\UsersController;
+        $UsersController = new \App\Controllers\UsersController();
         $UsersController->update();
     });
 // remove um usuário
     $route->get('/remove/{id}', function ($request) {
         // pega o ID da URL
         $id = $request->getAttribute('id');
-        $UsersController = new \App\Controllers\UsersController;
+        $UsersController = new \App\Controllers\UsersController();
         $UsersController->remove($id);
     });
 });
+
+
+$route->group('/medico', function () use ($route) {
+    $route->get('', function () {
+        $medico = new \App\Controllers\MedicoController();
+        $medico->index();
+    });
+});
+
 
 $route->group('/medicos', function () use ($route) {
     $route->get('', function () {

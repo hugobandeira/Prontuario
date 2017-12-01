@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 
+use App\Models\Cidades;
 use App\Models\Pacientes;
 
 class PacientesController
@@ -18,8 +19,7 @@ class PacientesController
     public function index()
     {
         if ($_SESSION['nivel'] == 1 || $_SESSION['nivel'] == 2) {
-            $pacientes = Pacientes::selectAll();
-
+            $pacientes = Pacientes::all();
             \App\View::make('/admin/pacientes/index', compact('pacientes'));
 
         } else {
@@ -31,7 +31,8 @@ class PacientesController
 
     public function create()
     {
-        \App\View::make('/admin/pacientes/create');
+        $cidades = Cidades::all();
+        \App\View::make('/admin/pacientes/create', compact('cidades'));
     }
 
     public function store()
@@ -49,7 +50,8 @@ class PacientesController
     public function show($id)
     {
         $paciente = Pacientes::selectAll($id)[0];
-        \App\View::make('/admin/pacientes/edit', compact('paciente'));
+        $cidades = Cidades::all();
+        \App\View::make('/admin/pacientes/edit', compact('paciente','cidades'));
 
     }
 

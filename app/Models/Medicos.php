@@ -19,6 +19,27 @@ class Medicos
         if (!empty($id)) {
             $where = 'WHERE id = :id';
         }
+        $sql = sprintf("SELECT Medicos.*, cidades.nome AS cida FROM Medicos INNER JOIN cidades ON Medicos.cidade_id = cidades.id %s ORDER BY id ASC", $where);
+
+        $DB = new DB;
+        $stmt = $DB->prepare($sql);
+
+        if (!empty($where)) {
+            $stmt->bindParam(':id', $id, \PDO::PARAM_INT);
+        }
+
+        $stmt->execute();
+
+        $medicos = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+        return $medicos;
+    }
+
+    public static function show($id = null)
+    {
+        $where = '';
+        if (!empty($id)) {
+            $where = 'WHERE id = :id';
+        }
         $sql = sprintf("SELECT * FROM Medicos %s ORDER BY id ASC", $where);
 
         $DB = new DB;
@@ -110,6 +131,7 @@ class Medicos
         $stmt->bindParam(':trabalho', $medico['trabalho']);
         $stmt->bindParam(':especialidade_id', $medico['especialidade_id']);
 
+        User::medico($medico);
         if ($stmt->execute()) {
             return true;
         } else {
@@ -176,6 +198,8 @@ class Medicos
         $stmt->bindParam(':celular', $medico['celular']);
         $stmt->bindParam(':trabalho', $medico['trabalho']);
         $stmt->bindParam(':especialidade_id', $medico['especialidade_id']);
+
+        User::medicoUpdate($medico);
 
         if ($stmt->execute()) {
             return true;

@@ -43,6 +43,7 @@ class MedicosController
         $medico = $_POST;
 
         if (Medicos::save($medico)) {
+            $_SESSION['msg'] = "Médico Salvo com sucesso";
             header('location: /medicos');
             exit();
         } else {
@@ -53,7 +54,7 @@ class MedicosController
 
     public function show($id)
     {
-        $medico = Medicos::selectAll($id)[0];
+        $medico = Medicos::show($id)[0];
         $cidades = Cidades::all();
         \App\View::make('/admin/medicos/edit', ['medico' => $medico, 'cidades' => $cidades]);
 

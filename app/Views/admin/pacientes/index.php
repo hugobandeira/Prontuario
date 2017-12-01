@@ -21,9 +21,9 @@
                         <table class="table table-hover table-striped">
                             <thead>
                             <tr>
-                                <th>ID</th>
                                 <th width="300">Nome</th>
                                 <th>Endereço</th>
+                                <th>TIPO SANGUÍNEO</th>
                                 <th>Cidade</th>
                                 <th width="150">Ações</th>
                             </tr>
@@ -34,10 +34,10 @@
                                 foreach ($pacientes as $paciente) {
                                     ?>
                                     <tr>
-                                        <td><?= $paciente['id'] ?></td>
                                         <td><?= $paciente['nome'] ?></td>
                                         <td><?= $paciente['endereco'] ?></td>
-                                        <td><?= $paciente['cidades'] ?></td>
+                                        <td><?= $paciente['tipo_sangue'] ?></td>
+                                        <td><?= $paciente['cida'] ?></td>
                                         <td>
                                             <a class="btn btn-fill btn-sm btn-default"
                                                href="/pacientes/edit/<?php echo $paciente['id']; ?>">

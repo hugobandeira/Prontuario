@@ -1,4 +1,4 @@
-<?php include __DIR__."/../../layouts/cabecalho.php";?>
+<?php include __DIR__ . "/../../layouts/cabecalho.php"; ?>
 
 <div class="content">
     <div class="container-fluid">
@@ -46,7 +46,13 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>Cidade</label>
-                                        <input type="text" name="cidades" class="form-control" placeholder="Cidade">
+                                        <select required name="cidade_id" class="form-control">
+                                            <option disabled>Selecione uma cidade</option>
+                                            <?php foreach ($cidades as $cidade) { ?>
+                                                <option value="<?= $cidade['id'] ?>"><?= $cidade['nome'] ?>
+                                                    - <?= $cidade['uf'] ?> </option>
+                                            <?php } ?>
+                                        </select>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
@@ -154,7 +160,4 @@
 </script>
 
 
-
-
-
-<?php include __DIR__."/../../layouts/rodape.php";?>
+<?php include __DIR__ . "/../../layouts/rodape.php"; ?>

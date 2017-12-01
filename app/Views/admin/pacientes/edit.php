@@ -6,7 +6,7 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="header">
-                        <h4 class="title">Cadastro de Pacientes</h4>
+                        <h4 class="title">Editar Paciente: <?= $paciente['nome'] ?></h4>
                     </div>
                     <div class="content">
                         <form method="post" action="/pacientes/edit">
@@ -48,8 +48,14 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>Cidade</label>
-                                        <input type="text" name="cidades" class="form-control"
-                                               value="<?= $paciente['cidades'] ?>">
+                                        <select name="cidade_id" class="form-control">
+                                            <?php foreach ($cidades as $cidade) { ?>
+                                                <option <?php if ($cidade['id'] == $paciente['cidade_id']) { ?>
+                                                    selected
+                                                <?php } ?> value="<?= $cidade['id'] ?>"><?= $cidade['nome'] ?>
+                                                    - <?= $cidade['uf'] ?> </option>
+                                            <?php } ?>
+                                        </select>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
@@ -71,7 +77,7 @@
                                 <div class="col-md-8">
                                     <div class="form-group">
                                         <label for="email">Email</label>
-                                        <input type="email" name="email" class="form-control"
+                                        <input required type="email" name="email" class="form-control"
                                                value="<?= $paciente['email'] ?>">
                                     </div>
                                 </div>
@@ -125,11 +131,13 @@
                             <div class="row">
                                 <div class="col-md-4">
                                     <label>NOME DO PAI</label>
-                                    <input type="text" name="nome_pai" class="form-control" value="<?= $paciente['nome_pai'] ?>">
+                                    <input type="text" name="nome_pai" class="form-control"
+                                           value="<?= $paciente['nome_pai'] ?>">
                                 </div>
                                 <div class="col-md-4">
                                     <label>NOME DA MÃE</label>
-                                    <input type="text" name="nome_mae" class="form-control" value="<?= $paciente['nome_mae'] ?>">
+                                    <input type="text" name="nome_mae" class="form-control"
+                                           value="<?= $paciente['nome_mae'] ?>">
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
@@ -138,17 +146,26 @@
                                                value="<?= $paciente['telefone_trabalho'] ?>">
                                     </div>
                                 </div>
+                            </div>
+                            <div class="row">
                                 <div class="col-md-1">
                                     <label>TIPO SANGUÍNEO</label>
                                     <input type="text" name="tipo_sangue" class="form-control"
                                            value="<?= $paciente['tipo_sangue'] ?>">
                                 </div>
                             </div>
+
                             <div class="row">
+                                <div class="col-md-10">
+                                    <button type="submit" class="btn btn-info btn-fill pull-right">Salvar</button>
+                                </div>
+                                <div class="col-md-2">
+                                    <button href="/pacientes" class="btn btn-danger btn-fill">Cancelar</button>
+                                </div>
 
                             </div>
-                            <button type="submit" class="btn btn-info btn-fill pull-right">Salvar</button>
                             <div class="clearfix"></div>
+
                         </form>
                     </div>
                 </div>
