@@ -18,7 +18,7 @@ class PacientesController
      */
     public function index()
     {
-        if ($_SESSION['nivel'] == 1 || $_SESSION['nivel'] == 2) {
+        if ($_SESSION['nivel'] == 1) {
             $pacientes = Pacientes::all();
             \App\View::make('/admin/pacientes/index', compact('pacientes'));
 
@@ -51,7 +51,7 @@ class PacientesController
     {
         $paciente = Pacientes::selectAll($id)[0];
         $cidades = Cidades::all();
-        \App\View::make('/admin/pacientes/edit', compact('paciente','cidades'));
+        \App\View::make('/admin/pacientes/edit', compact('paciente', 'cidades'));
 
     }
 

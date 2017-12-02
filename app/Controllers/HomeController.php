@@ -15,7 +15,11 @@ class HomeController
      */
     public function index()
     {
-        \App\View::make('/home/index');
+        if ($_SESSION['nivel'] == 2) {
+            \App\View::make('/medico/index');
+        } else {
+            \App\View::make('/home/index');
+        }
 
     }
 

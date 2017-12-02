@@ -20,7 +20,7 @@
                 </a>
             </li>
             <li id="pacientes">
-                <a href="/pacientes">
+                <a href="/medico/paciente">
                     <i class="pe-7s-user"></i>
                     <p>Pacientes</p>
                 </a>

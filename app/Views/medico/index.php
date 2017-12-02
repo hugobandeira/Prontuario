@@ -1,4 +1,4 @@
-<?php include __DIR__ . '/../layouts/cabecalho.php'; ?>
+<?php include __DIR__ . '/../layouts/cabecalho-medico.php'; ?>
     <div class="content">
         <div class="container-fluid">
 
@@ -7,7 +7,7 @@
                     Sistema de Agendamentos
                 </div>
                 <div class="card-block">
-                    <h4 class="card-title">Bem Vindo  <br>DR. <?= $_SESSION['name'] ?></h4>
+                    <h4 class="card-title">Bem Vindo <br>DR. <?= $_SESSION['name'] ?></h4>
                 </div>
                 <div class="card-footer text-muted">
                     Hugo Soluções
@@ -31,7 +31,7 @@
                     <div class="header">
                         <h4 class="title">Pacientes</h4>
                         <p class="category">lista de Pacientes</p>
-                        <a href="/pacientes" class="btn btn-primary">Todos os pacientes</a>
+                        <a href="/medico/paciente" class="btn btn-primary">Todos os pacientes</a>
                     </div>
                     <div class="content table-responsive table-full-width">
                     </div>

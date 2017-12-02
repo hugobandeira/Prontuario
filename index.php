@@ -86,6 +86,14 @@ $route->group('/medico', function () use ($route) {
         $medico = new \App\Controllers\MedicoController();
         $medico->index();
     });
+
+
+    //PACIENTES RELACIONADOS AO MEDICO
+    $route->get('/paciente', function () {
+        $medicoPaciente = new \App\Controllers\MedicoPacienteController();
+        $medicoPaciente->index();
+    });
+
 });
 
 
