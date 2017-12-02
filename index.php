@@ -44,14 +44,11 @@ $route->group('/agendamentos', function () use ($route) {
  *USUARIOS CADASTRO PARA ADMIN
  */
 $route->group('/user', function () use ($route) {
-// página inicial
-// listagem de usuários
-    $route->get('/', function () {
+    $route->get('', function () {
         $UsersController = new \App\Controllers\UsersController();
         $UsersController->index();
     });
-// adição de usuário
-// exibe o formulário de cadastro
+
     $route->get('/add', function () {
         $UsersController = new \App\Controllers\UsersController;
         $UsersController->create();

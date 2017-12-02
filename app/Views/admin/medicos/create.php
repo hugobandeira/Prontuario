@@ -10,8 +10,6 @@
                     </div>
                     <div class="content">
                         <form method="post" action="/medicos/add">
-
-
                             <div class="row">
                                 <div class="col-md-5">
                                     <div class="form-group">

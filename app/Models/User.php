@@ -19,7 +19,7 @@ class User
         if (!empty($id)) {
             $where = 'WHERE id = :id';
         }
-        $sql = sprintf("SELECT id, email, senha, senha FROM users %s ORDER BY name ASC", $where);
+        $sql = sprintf("SELECT * FROM users %s ORDER BY name ASC", $where);
         $DB = new DB;
         $stmt = $DB->prepare($sql);
 
@@ -38,26 +38,25 @@ class User
     /**
      * Salva no banco de dados um novo usuário
      */
-    public static function save($name, $email, $gender, $birthdate)
+    public static function save($user)
     {
         // validação (bem simples, só pra evitar dados vazios)
-        if (empty($name) || empty($email) || empty($gender) || empty($birthdate)) {
+        if (empty($user)) {
             echo "Volte e preencha todos os campos";
             return false;
         }
 
-        // a data vem no formato dd/mm/YYYY
-        // então precisamos converter para YYYY-mm-dd
-        $isoDate = dateConvert($birthdate);
+        $senha = md5($user['senha']);
 
         // insere no banco
         $DB = new DB;
-        $sql = "INSERT INTO users(name, email, senha ) VALUES(:name , :email, :senha)";
+        $sql = "INSERT INTO users(name, email, senha, nivel ) VALUES(:name , :email, :senha, :nivel)";
+
         $stmt = $DB->prepare($sql);
-        $stmt->bindParam(':name', $name);
-        $stmt->bindParam(':email', $email);
-        $stmt->bindParam(':gender', $gender);
-        $stmt->bindParam(':birthdate', $isoDate);
+        $stmt->bindParam(':name', $user['name']);
+        $stmt->bindParam(':email', $user['email']);
+        $stmt->bindParam(':senha', $senha);
+        $stmt->bindParam(':nivel', $user['nivel']);
 
         if ($stmt->execute()) {
             return true;

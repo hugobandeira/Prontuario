@@ -159,7 +159,7 @@ class Cookies implements CookiesInterface
      *
      * @param  string $header The raw HTTP request `Cookie:` header
      *
-     * @return array Associative array of cookie names.php and values
+     * @return array Associative array of cookie names and values
      *
      * @throws InvalidArgumentException if the cookie data cannot be parsed
      */

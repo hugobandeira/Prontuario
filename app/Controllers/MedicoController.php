@@ -20,7 +20,7 @@ class MedicoController
     {
         if ($_SESSION['nivel'] == '2') {
 
-            \App\View::make('/admin/medico/index');
+            \App\View::make('/medico/index');
         } else {
             header('location: /home');
             exit();

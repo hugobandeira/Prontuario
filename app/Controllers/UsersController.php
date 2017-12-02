@@ -9,16 +9,15 @@
 namespace App\Controllers;
 
 
+use App\Models\User;
+
 class UsersController
 {
     /** * Listagem de usuários */
     public function index()
     {
-        \App\View::make('/layouts/app');
-    }
-
-    public function verifica(){
-
+        $users = User::selectAll();
+        \App\View::make('/admin/users/index', ['users' => $users]);
     }
 
     /**
@@ -26,7 +25,7 @@ class UsersController
      */
     public function create()
     {
-        \App\View::make('users.create');
+        \App\View::make('/admin/users/create');
     }
 
 
@@ -35,14 +34,10 @@ class UsersController
      */
     public function store()
     {
-        // pega os dados do formuário
-        $name = isset($_POST['name']) ? $_POST['name'] : null;
-        $email = isset($_POST['email']) ? $_POST['email'] : null;
-        $gender = isset($_POST['gender']) ? $_POST['gender'] : null;
-        $birthdate = isset($_POST['birthdate']) ? $_POST['birthdate'] : null;
-
-        if (User::save($name, $email, $gender, $birthdate)) {
-            header('Location: /');
+        $user = $_POST;
+        if (User::save($user)) {
+            $_SESSION['msg'] = "Usuário Salvo com sucesso";
+            header('Location: /user');
             exit;
         }
     }
@@ -55,7 +50,7 @@ class UsersController
     {
         $user = User::selectAll($id)[0];
 
-        \App\View::make('users.edit', [
+        \App\View::make('admin/users/edit', [
             'user' => $user,
         ]);
     }

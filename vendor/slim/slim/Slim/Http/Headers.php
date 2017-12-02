@@ -77,7 +77,7 @@ class Headers extends Collection implements HeadersInterface
     {
         $authorization = $environment->get('HTTP_AUTHORIZATION');
 
-        if (null === $authorization && is_callable('getallheaders')) {
+        if (empty($authorization) && is_callable('getallheaders')) {
             $headers = getallheaders();
             $headers = array_change_key_case($headers, CASE_LOWER);
             if (isset($headers['authorization'])) {
@@ -89,7 +89,7 @@ class Headers extends Collection implements HeadersInterface
     }
 
     /**
-     * Return array of HTTP header names.php and values.
+     * Return array of HTTP header names and values.
      * This method returns the _original_ header name
      * as specified by the end user.
      *
@@ -202,9 +202,9 @@ class Headers extends Collection implements HeadersInterface
     /**
      * Normalize header name
      *
-     * This method transforms header names.php into a
+     * This method transforms header names into a
      * normalized form. This is how we enable case-insensitive
-     * header names.php in the other methods in this class.
+     * header names in the other methods in this class.
      *
      * @param  string $key The case-insensitive header name
      *

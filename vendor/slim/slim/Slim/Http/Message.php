@@ -40,6 +40,7 @@ abstract class Message implements MessageInterface
         '1.0' => true,
         '1.1' => true,
         '2.0' => true,
+        '2' => true,
     ];
 
     /**
@@ -131,7 +132,7 @@ abstract class Message implements MessageInterface
      *         }
      *     }
      *
-     * While header names.php are not case-sensitive, getHeaders() will preserve the
+     * While header names are not case-sensitive, getHeaders() will preserve the
      * exact case in which headers were originally specified.
      *
      * @return array Returns an associative array of the message's headers. Each
@@ -147,7 +148,7 @@ abstract class Message implements MessageInterface
      * Checks if a header exists by the given case-insensitive name.
      *
      * @param string $name Case-insensitive header field name.
-     * @return bool Returns true if any header names.php match the given header
+     * @return bool Returns true if any header names match the given header
      *     name using a case-insensitive string comparison. Returns false if
      *     no matching header name is found in the message.
      */
@@ -202,7 +203,7 @@ abstract class Message implements MessageInterface
     /**
      * Return an instance with the provided value replacing the specified header.
      *
-     * While header names.php are case-insensitive, the casing of the header will
+     * While header names are case-insensitive, the casing of the header will
      * be preserved by this function, and returned from getHeaders().
      *
      * This method MUST be implemented in such a way as to retain the
@@ -212,7 +213,7 @@ abstract class Message implements MessageInterface
      * @param string $name Case-insensitive header field name.
      * @param string|string[] $value Header value(s).
      * @return static
-     * @throws \InvalidArgumentException for invalid header names.php or values.
+     * @throws \InvalidArgumentException for invalid header names or values.
      */
     public function withHeader($name, $value)
     {
@@ -236,7 +237,7 @@ abstract class Message implements MessageInterface
      * @param string $name Case-insensitive header field name to add.
      * @param string|string[] $value Header value(s).
      * @return static
-     * @throws \InvalidArgumentException for invalid header names.php or values.
+     * @throws \InvalidArgumentException for invalid header names or values.
      */
     public function withAddedHeader($name, $value)
     {

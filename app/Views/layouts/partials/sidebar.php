@@ -25,34 +25,11 @@
                     <p>Medicos</p>
                 </a>
             </li>
-            <li>
-                <a href="/">
-                    <i class="pe-7s-news-paper"></i>
-                    <p>Typography</p>
-                </a>
-            </li>
-            <li>
-                <a href="/">
-                    <i class="pe-7s-science"></i>
-                    <p>Icons</p>
-                </a>
-            </li>
-            <li>
-                <a href="/">
-                    <i class="pe-7s-map-marker"></i>
-                    <p>Maps</p>
-                </a>
-            </li>
-            <li>
-                <a href="/">
-                    <i class="pe-7s-bell"></i>
-                    <p>Notifications</p>
-                </a>
-            </li>
-            <li class="active-pro">
-                <a href="/">
+
+            <li id="user" class="active-pro">
+                <a href="/user">
                     <i class="pe-7s-user"></i>
-                    <p>Casdastrar Usuarios</p>
+                    <p>Usuário</p>
                 </a>
             </li>
         </ul>

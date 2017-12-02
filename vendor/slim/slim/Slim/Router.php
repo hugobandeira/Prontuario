@@ -24,7 +24,7 @@ use Slim\Interfaces\RouteInterface;
  * Router
  *
  * This class organizes Slim application route objects. It is responsible
- * for registering route objects, assigning names.php to route objects,
+ * for registering route objects, assigning names to route objects,
  * finding routes that match the current HTTP request, and creating
  * URLs for a named route.
  */

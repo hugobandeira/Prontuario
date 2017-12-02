@@ -49,7 +49,6 @@ class MedicosController
         } else {
             return "erro";
         }
-        return header('/medicos');
     }
 
     public function show($id)
