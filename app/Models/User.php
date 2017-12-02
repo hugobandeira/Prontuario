@@ -79,8 +79,9 @@ class User
 
         // insere no banco
         $DB = new DB;
-        $sql = "INSERT INTO users(name, email, senha ) VALUES(:name , :email, :senha)";
+        $sql = "INSERT INTO users(id, name, email, senha ) VALUES(:id ,:name , :email, :senha)";
         $stmt = $DB->prepare($sql);
+        $stmt->bindParam(':id', $medico['crm']);
         $stmt->bindParam(':name', $medico['nome']);
         $stmt->bindParam(':email', $medico['email']);
         $stmt->bindParam(':senha', $senha);
@@ -105,12 +106,13 @@ class User
 
         // insere no banco
         $DB = new DB;
-        $sql = "UPDATE users SET name = :name, email = :email WHERE id = :id";
+        $sql = "UPDATE users SET name = :name, email = :email, nivel = :nivel WHERE id = :id";
 
         $stmt = $DB->prepare($sql);
         $stmt->bindParam(':name', $medico['nome']);
         $stmt->bindParam(':email', $medico['email']);
-        $stmt->bindParam(':id', $medico['id'], \PDO::PARAM_INT);
+        $stmt->bindValue(':nivel', 2);
+        $stmt->bindParam(':id', $medico['crm'], \PDO::PARAM_INT);
 
         if ($stmt->execute()) {
             return true;
@@ -133,7 +135,7 @@ class User
         }
 
 
-        $senha = md5($user['medico']);
+        $senha = md5($user['senha']);
         // insere no banco
         $DB = new DB;
         $sql = "UPDATE users SET name = :name, email = :email, senha = :senha, nivel= :nivel WHERE id = :id";

@@ -1,67 +1,244 @@
-<?php include __DIR__ . "/../../layouts/cabecalho-medico.php" ?>
+<?php include __DIR__ . '/../layouts/cabecalho.php'; ?>
     <div class="content">
         <div class="container-fluid">
+
+            <div class="card text-center">
+                <div class="card-header">
+                    Sistema de Agendamentos
+                </div>
+                <div class="card-block">
+                    <h4 class="card-title">Bem Vindo  <br>DR. <?= $_SESSION['name'] ?></h4>
+                </div>
+                <div class="card-footer text-muted">
+                    Hugo Soluções
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="card">
+                    <div style="text-align: center" class="header">
+                        <h4 class="title">Agendamento</h4>
+                        <p class="category">lista de agendamentos</p>
+                        <a href="/medico/agendamentos" class="btn btn-primary">Faça um agendamento</a>
+                    </div>
+                    <div class="content table-responsive table-full-width">
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div style="text-align: center" class="card">
+                    <div class="header">
+                        <h4 class="title">Pacientes</h4>
+                        <p class="category">lista de Pacientes</p>
+                        <a href="/pacientes" class="btn btn-primary">Todos os pacientes</a>
+                    </div>
+                    <div class="content table-responsive table-full-width">
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="header">
+                        <h4 class="title">Email Statistics</h4>
+                        <p class="category">Last Campaign Performance</p>
+                    </div>
+                    <div class="content">
+                        <div id="chartPreferences" class="ct-chart ct-perfect-fourth"></div>
+
+                        <div class="footer">
+                            <div class="legend">
+                                <i class="fa fa-circle text-info"></i> Open
+                                <i class="fa fa-circle text-danger"></i> Bounce
+                                <i class="fa fa-circle text-warning"></i> Unsubscribe
+                            </div>
+                            <hr>
+                            <div class="stats">
+                                <i class="fa fa-clock-o"></i> Campaign sent 2 days ago
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="header">
+                        <h4 class="title">Users Behavior</h4>
+                        <p class="category">24 Hours performance</p>
+                    </div>
+                    <div class="content">
+                        <div id="chartHours" class="ct-chart"></div>
+                        <div class="footer">
+                            <div class="legend">
+                                <i class="fa fa-circle text-info"></i> Open
+                                <i class="fa fa-circle text-danger"></i> Click
+                                <i class="fa fa-circle text-warning"></i> Click Second Time
+                            </div>
+                            <hr>
+                            <div class="stats">
+                                <i class="fa fa-history"></i> Updated 3 minutes ago
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <div class="row">
-                <div class="col-md-12">
-                    <div class="card">
-                        <br>
-                        <div class="pull-right col-md-2">
-                            <a href="/medicos/add">
-                                <button id="btnNovo" class="btn btn-fill btn-sm btn-success" data-toggle="modal"
-                                        data-target="#myModal">
-                                    <strong> Adicionar</strong>
-                                </button>
-                            </a>
-                        </div>
-                        <br>
+                <div class="col-md-6">
+                    <div class="card ">
                         <div class="header">
-                            <h4 class="title"><strong>Médicos</strong></h4>
-                            <p class="category">Lista de médicos</p>
+                            <h4 class="title">2014 Sales</h4>
+                            <p class="category">All products including Taxes</p>
                         </div>
-                        <?php include __DIR__ . "/../../layouts/msg.php" ?>
-                        <div class="content table-responsive table-full-width">
-                            <table class="table table-hover table-striped">
-                                <thead>
-                                <tr>
-                                    <th>ID</th>
-                                    <th>Medico</th>
-                                    <th>Email</th>
-                                    <th>Telefone</th>
-                                    <th>Cidade</th>
-                                    <th>Ações</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <?php
-                                if (isset($medicos[0])) {
-                                    foreach ($medicos[0] as $medico) { ?>
-                                        <tr>
-                                            <td><?= $medico['id'] ?></td>
-                                            <td><?= $medico['nome'] ?></td>
-                                            <td><?= $medico['email'] ?></td>
-                                            <td><?= $medico['telefone'] ?></td>
-                                            <td><?= $medico['cida'] ?></td>
+                        <div class="content">
+                            <div id="chartActivity" class="ct-chart"></div>
 
-                                            <td>
-                                                <a class="btn btn-fill btn-sm btn-default"
-                                                   href="/medicos/edit/<?php echo $medico['id']; ?>">
-                                                    <div class="font-icon-detail">
-                                                        <!--<i class="pe-7s-pen"></i>-->
-                                                        <strong>Editar</strong>
-                                                    </div>
-                                                </a>
-                                                <a class="btn btn-fill btn-sm btn-danger"
-                                                   href="/medicos/delete/<?php echo $medico['id']; ?>"
-                                                   onclick="return confirm('Tem certeza de que deseja remover?');">
-                                                    <strong> Deletar</strong>
-                                                </a>
-                                            </td>
-                                        </tr>
-                                    <?php }
-                                } ?>
+                            <div class="footer">
+                                <div class="legend">
+                                    <i class="fa fa-circle text-info"></i> Tesla Model S
+                                    <i class="fa fa-circle text-danger"></i> BMW 5 Series
+                                </div>
+                                <hr>
+                                <div class="stats">
+                                    <i class="fa fa-check"></i> Data information certified
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-                                </tbody>
-                            </table>
+                <div class="col-md-6">
+                    <div class="card ">
+                        <div class="header">
+                            <h4 class="title">Tasks</h4>
+                            <p class="category">Backend development</p>
+                        </div>
+                        <div class="content">
+                            <div class="table-full-width">
+                                <table class="table">
+                                    <tbody>
+                                    <tr>
+                                        <td>
+                                            <label class="checkbox">
+                                                <input type="checkbox" value="" data-toggle="checkbox">
+                                            </label>
+                                        </td>
+                                        <td>Sign contract for "What are conference organizers afraid of?"</td>
+                                        <td class="td-actions text-right">
+                                            <button type="button" rel="tooltip" title="Edit Task"
+                                                    class="btn btn-info btn-simple btn-xs">
+                                                <i class="fa fa-edit"></i>
+                                            </button>
+                                            <button type="button" rel="tooltip" title="Remove"
+                                                    class="btn btn-danger btn-simple btn-xs">
+                                                <i class="fa fa-times"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <label class="checkbox">
+                                                <input type="checkbox" value="" data-toggle="checkbox" checked="">
+                                            </label>
+                                        </td>
+                                        <td>Lines From Great Russian Literature? Or E-mails From My Boss?</td>
+                                        <td class="td-actions text-right">
+                                            <button type="button" rel="tooltip" title="Edit Task"
+                                                    class="btn btn-info btn-simple btn-xs">
+                                                <i class="fa fa-edit"></i>
+                                            </button>
+                                            <button type="button" rel="tooltip" title="Remove"
+                                                    class="btn btn-danger btn-simple btn-xs">
+                                                <i class="fa fa-times"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <label class="checkbox">
+                                                <input type="checkbox" value="" data-toggle="checkbox" checked="">
+                                            </label>
+                                        </td>
+                                        <td>Flooded: One year later, assessing what was lost and what was found when a
+                                            ravaging rain swept through metro Detroit
+                                        </td>
+                                        <td class="td-actions text-right">
+                                            <button type="button" rel="tooltip" title="Edit Task"
+                                                    class="btn btn-info btn-simple btn-xs">
+                                                <i class="fa fa-edit"></i>
+                                            </button>
+                                            <button type="button" rel="tooltip" title="Remove"
+                                                    class="btn btn-danger btn-simple btn-xs">
+                                                <i class="fa fa-times"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <label class="checkbox">
+                                                <input type="checkbox" value="" data-toggle="checkbox">
+                                            </label>
+                                        </td>
+                                        <td>Create 4 Invisible User Experiences you Never Knew About</td>
+                                        <td class="td-actions text-right">
+                                            <button type="button" rel="tooltip" title="Edit Task"
+                                                    class="btn btn-info btn-simple btn-xs">
+                                                <i class="fa fa-edit"></i>
+                                            </button>
+                                            <button type="button" rel="tooltip" title="Remove"
+                                                    class="btn btn-danger btn-simple btn-xs">
+                                                <i class="fa fa-times"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <label class="checkbox">
+                                                <input type="checkbox" value="" data-toggle="checkbox">
+                                            </label>
+                                        </td>
+                                        <td>Read "Following makes Medium better"</td>
+                                        <td class="td-actions text-right">
+                                            <button type="button" rel="tooltip" title="Edit Task"
+                                                    class="btn btn-info btn-simple btn-xs">
+                                                <i class="fa fa-edit"></i>
+                                            </button>
+                                            <button type="button" rel="tooltip" title="Remove"
+                                                    class="btn btn-danger btn-simple btn-xs">
+                                                <i class="fa fa-times"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <label class="checkbox">
+                                                <input type="checkbox" value="" data-toggle="checkbox">
+                                            </label>
+                                        </td>
+                                        <td>Unfollow 5 enemies from twitter</td>
+                                        <td class="td-actions text-right">
+                                            <button type="button" rel="tooltip" title="Edit Task"
+                                                    class="btn btn-info btn-simple btn-xs">
+                                                <i class="fa fa-edit"></i>
+                                            </button>
+                                            <button type="button" rel="tooltip" title="Remove"
+                                                    class="btn btn-danger btn-simple btn-xs">
+                                                <i class="fa fa-times"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <div class="footer">
+                                <hr>
+                                <div class="stats">
+                                    <i class="fa fa-history"></i> Updated 3 minutes ago
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -70,9 +247,11 @@
     </div>
 
 
-    <script src="/public_html/js/jquery-3.2.1.min.js"></script>
-    <script>
-        $('#medicos').addClass('active')
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            demo.initChartist();
+        });
     </script>
 
-<?php include __DIR__ . "/../../layouts/rodape.php"; ?>
+<?php include __DIR__ . '/../layouts/rodape.php'; ?>

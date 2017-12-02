@@ -19,7 +19,6 @@ class MedicoController
     public function index()
     {
         if ($_SESSION['nivel'] == '2') {
-
             \App\View::make('/medico/index');
         } else {
             header('location: /home');

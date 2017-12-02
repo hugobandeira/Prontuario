@@ -27,4 +27,7 @@
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
     <link href="/public_html/css/pe-icon-7-stroke.css" rel="stylesheet"/>
 
+    <script src="/public_html/js/jquery-3.2.1.min.js"></script>
+
+
 </head>

@@ -28,9 +28,9 @@ class LoginController
         $usuario = $_POST['user'];
         $senha = md5($_POST['senha']);
         $user = Login::teste($usuario, $senha)[0];
-
         if (isset($user)) {
-            $_SESSION['nome'] = strtoupper($user['email']);
+            $_SESSION = $user;
+            $_SESSION['nome'] = strtoupper($user['name']);
             $_SESSION['nivel'] = $user['nivel'];
             if ($user['nivel'] == '1') {
                 header('location: /home');
