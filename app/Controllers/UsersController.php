@@ -13,6 +13,11 @@ use App\Models\User;
 
 class UsersController
 {
+    public function __construct()
+    {
+        session_start();
+    }
+
     /** * Listagem de usuários */
     public function index()
     {
@@ -62,14 +67,10 @@ class UsersController
     public function update()
     {
         // pega os dados do formuário
-        $id = $_POST['id'];
-        $name = isset($_POST['name']) ? $_POST['name'] : null;
-        $email = isset($_POST['email']) ? $_POST['email'] : null;
-        $gender = isset($_POST['gender']) ? $_POST['gender'] : null;
-        $birthdate = isset($_POST['birthdate']) ? $_POST['birthdate'] : null;
-
-        if (User::update($id, $name, $email, $gender, $birthdate)) {
-            header('Location: /');
+        $user = $_POST;
+        if (User::update($user)) {
+            $_SESSION['msg'] = "Usuário editado com sucesso";
+            header('Location: /user');
             exit;
         }
     }
@@ -81,7 +82,8 @@ class UsersController
     public function remove($id)
     {
         if (User::remove($id)) {
-            header('Location: /');
+            $_SESSION['msg'] = "Usuário editado com sucesso";
+            header('Location: /user');
             exit;
         }
     }

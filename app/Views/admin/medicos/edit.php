@@ -102,14 +102,15 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>RG</label>
-                                        <input required type="text" name="rg" class="form-control" value="<?= $medico['rg'] ?>">
+                                        <input required type="text" name="rg" class="form-control"
+                                               value="<?= $medico['rg'] ?>">
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>DATA NASCIMENTO</label>
                                         <input required type="date" name="data_nascimento" class="form-control"
-                                               value="<?= date('Y-m-d', strtotime($medico['crm'])) ?>">
+                                               value="<?= date('Y-m-d', strtotime($medico['data_nascimento'])) ?>">
                                     </div>
                                 </div>
                             </div>
@@ -158,9 +159,8 @@
                                     <button type="submit" class="btn btn-info btn-fill pull-right">Salvar</button>
                                 </div>
                                 <div class="col-md-2">
-                                    <button href="/medicos" class="btn btn-danger btn-fill">Cancelar</button>
+                                    <a href="/medicos" class="btn btn-danger btn-fill">Cancelar</a>
                                 </div>
-
                             </div>
                             <div class="clearfix"></div>
                         </form>

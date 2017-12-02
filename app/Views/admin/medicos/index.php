@@ -28,7 +28,7 @@
                                     <th>Email</th>
                                     <th>Telefone</th>
                                     <th>Cidade</th>
-                                    <th>Ações</th>
+                                    <th width="150" class="text-center">Ações</th>
                                 </tr>
                                 </thead>
                                 <tbody>

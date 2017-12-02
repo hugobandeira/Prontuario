@@ -124,27 +124,25 @@ class User
     /**
      * Altera no banco de dados um usuário
      */
-    public static function update($id, $name, $email, $gender, $birthdate)
+    public static function update($user)
     {
         // validação (bem simples, só pra evitar dados vazios)
-        if (empty($name) || empty($email) || empty($gender) || empty($birthdate)) {
+        if (empty($user)) {
             echo "Volte e preencha todos os campos";
             return false;
         }
 
-        // a data vem no formato dd/mm/YYYY
-        // então precisamos converter para YYYY-mm-dd
-        $isoDate = dateConvert($birthdate);
 
+        $senha = md5($user['medico']);
         // insere no banco
         $DB = new DB;
-        $sql = "UPDATE users SET name = :name, email = :email, gender = :gender, birthdate = :birthdate WHERE id = :id";
+        $sql = "UPDATE users SET name = :name, email = :email, senha = :senha, nivel= :nivel WHERE id = :id";
         $stmt = $DB->prepare($sql);
-        $stmt->bindParam(':name', $name);
-        $stmt->bindParam(':email', $email);
-        $stmt->bindParam(':gender', $gender);
-        $stmt->bindParam(':birthdate', $isoDate);
-        $stmt->bindParam(':id', $id, \PDO::PARAM_INT);
+        $stmt->bindParam(':name', $user['name']);
+        $stmt->bindParam(':email', $user['email']);
+        $stmt->bindParam(':senha', $senha);
+        $stmt->bindParam(':nivel', $user['nivel']);
+        $stmt->bindParam(':id', $user['id'], \PDO::PARAM_INT);
 
         if ($stmt->execute()) {
             return true;

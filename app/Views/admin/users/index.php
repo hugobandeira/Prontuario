@@ -26,7 +26,7 @@
                                     <th>Nome</th>
                                     <th>Email</th>
                                     <th>Nivel</th>
-                                    <th style="width: 230px; text-align: center">Ações</th>
+                                    <th width="150" class="text-center">Ações</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -35,18 +35,25 @@
                                         <tr id="tr_{{ $cidade->id }}">
                                             <td><?= $user['name'] ?></td>
                                             <td><?= $user['email'] ?></td>
-                                            <td><?= $user['nivel'] ?></td>
+                                            <td>
+                                                <?php if ($user['nivel'] == 1): ?>
+                                                    Administrador
+                                                <?php elseif ($user['nivel'] == 2): ?>
+                                                    Médico
+                                                <?php elseif ($user['nivel'] == 3): ?>
+                                                    Secretária
+                                                <?php endif; ?>
+                                            </td>
                                             <td>
                                                 <a class="btn btn-fill btn-sm btn-inverse"
                                                    href="/user/edit/<?= $user['id'] ?>">
-                                                    <i class="fa fa-pencil" style="color: #fff;"></i>
-                                                    Editar
+                                                    <strong>Editar</strong>
                                                 </a>
-                                                <button class="btn btn-fill btn-sm btn-danger"
-                                                        onclick="excluir('{{ $cidade->id }}', 'Cidades')">
-                                                    <i class="fa fa-remove"></i>
-                                                    Excluir
-                                                </button>
+                                                <a class="btn btn-fill btn-sm btn-danger"
+                                                   href="/user/remove/<?= $user['id']; ?>"
+                                                   onclick="return confirm('Tem certeza de que deseja remover?');">
+                                                    <strong> Deletar</strong>
+                                                </a>
                                             </td>
                                         </tr>
                                     <?php endforeach; ?>

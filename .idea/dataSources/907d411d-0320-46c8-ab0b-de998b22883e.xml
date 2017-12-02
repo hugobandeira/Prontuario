@@ -508,10 +508,18 @@ especialidade_id</ColNames>
       <NotNull>1</NotNull>
       <DefaultExpression>&apos;1&apos;</DefaultExpression>
     </column>
-    <key id="129" parent="20" name="PRIMARY">
+    <index id="129" parent="20" name="email">
+      <ColNames>email</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="130" parent="20" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
+    </key>
+    <key id="131" parent="20" name="email">
+      <ColNames>email</ColNames>
+      <UnderlyingIndexName>email</UnderlyingIndexName>
     </key>
   </database-model>
 </dataSource>
