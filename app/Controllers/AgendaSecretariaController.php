@@ -49,15 +49,37 @@ class AgendaSecretariaController
     {
         $pacientes = Pacientes::all();
         $medicos = Medicos::selectAll();
-        return \App\View::make('secretaria/agendamento/edit', compact('pacientes', 'medicos'));
+        $agendamento = AgendarSecretaria::selectAll($id)[0];
+        if ($agendamento['status'] == 'F') {
+            $_SESSION['msg'] = "Agendamento está finalizado";
+            header('location: /secretaria/agendamentos');
+            exit();
+        } else {
+            return \App\View::make('secretaria/agendamento/edit', compact('agendamento', 'pacientes', 'medicos'));
+        }
     }
 
     public function update()
     {
-
+        $agendamento = $_POST;
+        if (AgendarSecretaria::update($agendamento)) {
+            $_SESSION['msg'] = "Agendamento editado com sucesso";
+            header('location: /secretaria/agendamentos');
+            exit;
+        }
     }
 
     public function delete($id)
     {
+        $agendamento = AgendarSecretaria::selectAll($id)[0];
+        if ($agendamento['status'] == 'F') {
+            $_SESSION['msg'] = "Agendamento está finalizado";
+            header('location: /secretaria/agendamentos');
+            exit();
+        } else {
+            AgendarSecretaria::remove($id);
+            header('location: /secretaria/agendamentos');
+            exit();
+        }
     }
 }

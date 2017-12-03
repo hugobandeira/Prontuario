@@ -124,6 +124,20 @@ $route->group('/secretaria', function () use ($route) {
             $agendamento = new \App\Controllers\AgendaSecretariaController();
             $agendamento->store();
         });
+        $route->get('/edit/{id}', function ($request) {
+            $id = $request->getAttribute('id');
+            $agendamento = new \App\Controllers\AgendaSecretariaController();
+            $agendamento->show($id);
+        });
+        $route->post('/edit', function ($request) {
+            $agendamento = new \App\Controllers\AgendaSecretariaController();
+            $agendamento->update();
+        });
+        $route->get('/delete/{id}', function ($request) {
+            $id = $request->getAttribute('id');
+            $agendamento = new \App\Controllers\AgendaSecretariaController();
+            $agendamento->delete($id);
+        });
     });
 });
 

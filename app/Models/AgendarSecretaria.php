@@ -18,7 +18,7 @@ class AgendarSecretaria
         if (!empty($id)) {
             $where = 'WHERE id = :id';
         }
-        $sql = sprintf("SELECT * from Agendamento ORDER BY id ASC", $where);
+        $sql = sprintf("SELECT * from Agendamento %s ORDER BY id ASC", $where);
 
         $DB = new DB;
         $stmt = $DB->prepare($sql);
@@ -28,9 +28,8 @@ class AgendarSecretaria
         }
 
         $stmt->execute();
-
-        $medicos = $stmt->fetchAll(\PDO::FETCH_ASSOC);
-        return $medicos;
+        $agendamento = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+        return $agendamento;
     }
 
     /**
@@ -84,10 +83,10 @@ class AgendarSecretaria
     /**
      * Altera no banco de dados um usuário
      */
-    public static function update($medico)
+    public static function update($agendamento)
     {
         // validação (bem simples, só pra evitar dados vazios)
-        if (empty($medico)) {
+        if (empty($agendamento)) {
             echo "Volte e preencha todos os campos";
             return false;
         }
@@ -99,49 +98,21 @@ class AgendarSecretaria
         // insere no banco
         $DB = new DB;
 
-        $sql = "UPDATE Medicos SET 
-                        crm = :crm,
-                        email = :email,
-                        nome = :nome,
-                        endereco = :endereco,
-                        bairro = :bairro,
-                        cidade_id =:cidade_id,
-                        cep = :cep, 
-                        complemento = :complemento, 
-                        cpf = :cpf,
-                        rg = :rg,
-                        data_nascimento = :data_nascimento,
-                        naturalidade = :naturalidade,
-                        nacionalidade = :nacionalidade,
-                        telefone = :telefone,  
-                        celular = :celular, 
-                        trabalho =:trabalho,
-                        especialidade_id = :especialidade_id WHERE id = {$medico['id']}";
+        $sql = "UPDATE Agendamento SET 
+                        medico_id = :medico_id,
+                        hora = :hora,
+                        data = :data 
+                        WHERE id = :id";
 
         $stmt = $DB->prepare($sql);
-        $stmt->bindParam(':crm', $medico['crm']);
-        $stmt->bindParam(':email', $medico['email']);
-        $stmt->bindParam(':nome', $medico['nome']);
-        $stmt->bindParam(':endereco', $medico['endereco']);
-        $stmt->bindParam(':bairro', $medico['bairro']);
-        $stmt->bindParam(':cidade_id', $medico['cidade_id']);
-        $stmt->bindParam(':cep', $medico['cep']);
-        $stmt->bindParam(':cpf', $medico['cpf']);
-        $stmt->bindParam(':rg', $medico['rg']);
-        $stmt->bindParam(':complemento', $medico['complemento']);
-        $stmt->bindParam(':data_nascimento', $medico['data_nascimento']);
-        $stmt->bindParam(':naturalidade', $medico['naturalidade']);
-        $stmt->bindParam(':nacionalidade', $medico['nacionalidade']);
-        $stmt->bindParam(':telefone', $medico['telefone']);
-        $stmt->bindParam(':celular', $medico['celular']);
-        $stmt->bindParam(':trabalho', $medico['trabalho']);
-        $stmt->bindParam(':especialidade_id', $medico['especialidade_id']);
 
-        User::medicoUpdate($medico);
+        $stmt->bindParam(':id', $agendamento['id']);
+        $stmt->bindParam(':medico_id', $agendamento['medico_id']);
+        $stmt->bindParam(':hora', $agendamento['hora']);
+        $stmt->bindParam(':data', $agendamento['data']);
 
         if ($stmt->execute()) {
             return true;
-
         } else {
             echo "Erro ao cadastrar";
             print_r($stmt->errorInfo());
@@ -160,7 +131,7 @@ class AgendarSecretaria
 
         // remove do banco
         $DB = new DB;
-        $sql = "DELETE FROM Medicos WHERE id = :id";
+        $sql = "DELETE FROM Agendamento WHERE id = :id";
         $stmt = $DB->prepare($sql);
         $stmt->bindParam(':id', $id, \PDO::PARAM_INT);
 
