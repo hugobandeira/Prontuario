@@ -94,6 +94,37 @@ $route->group('/medico', function () use ($route) {
         $medicoPaciente->index();
     });
 
+    $route->get('/agenda', function () {
+        $agenda = new \App\Controllers\AgendaMedicoController();
+        $agenda->index();
+    });
+
+    $route->get('/agenda/atende', function () {
+
+    });
+
+});
+
+$route->group('/secretaria', function () use ($route) {
+    $route->get('', function () {
+        $secretaria = new \App\Controllers\SecretariaMedicoController();
+        $secretaria->index();
+    });
+
+    $route->group('/agendamentos', function () use ($route) {
+        $route->get('', function () {
+            $agendamento = new \App\Controllers\AgendaSecretariaController();
+            $agendamento->index();
+        });
+        $route->get('/add', function () {
+            $agendamento = new \App\Controllers\AgendaSecretariaController();
+            $agendamento->create();
+        });
+        $route->post('/add', function () {
+            $agendamento = new \App\Controllers\AgendaSecretariaController();
+            $agendamento->store();
+        });
+    });
 });
 
 

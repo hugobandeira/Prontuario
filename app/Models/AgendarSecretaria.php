@@ -2,47 +2,23 @@
 /**
  * Created by PhpStorm.
  * User: hugo
- * Date: 25/09/17
- * Time: 01:43
+ * Date: 12/3/17
+ * Time: 3:21 PM
  */
 
 namespace App\Models;
 
 use \App\DB;
 
-class Medicos
+class AgendarSecretaria
 {
-    // RETORNA O MEDICO PARA OS OUTROS MODELS
-    public static function medico($id = null)
-    {
-        $where = '';
-        if (!empty($id)) {
-            $where = 'WHERE crm = :id';
-        }
-        $sql = sprintf("SELECT * FROM Medicos %s ORDER BY id ASC", $where);
-
-        $DB = new DB;
-        $stmt = $DB->prepare($sql);
-
-        if (!empty($where)) {
-            $stmt->bindParam(':id', $id, \PDO::PARAM_INT);
-        }
-
-        $stmt->execute();
-
-        $medicos = $stmt->fetchAll(\PDO::FETCH_ASSOC);
-        return $medicos[0];
-    }
-
-
-    /** * Busca usuários * * Se o ID não for passado, busca todos. Caso contrário, filtra pelo ID especificado. */
     public static function selectAll($id = null)
     {
         $where = '';
         if (!empty($id)) {
             $where = 'WHERE id = :id';
         }
-        $sql = sprintf("SELECT Medicos.*, cidades.nome AS cida FROM Medicos INNER JOIN cidades ON Medicos.cidade_id = cidades.id %s ORDER BY id ASC", $where);
+        $sql = sprintf("SELECT * from Agendamento ORDER BY id ASC", $where);
 
         $DB = new DB;
         $stmt = $DB->prepare($sql);
@@ -56,105 +32,45 @@ class Medicos
         $medicos = $stmt->fetchAll(\PDO::FETCH_ASSOC);
         return $medicos;
     }
-
-    public static function show($id = null)
-    {
-        $where = '';
-        if (!empty($id)) {
-            $where = 'WHERE id = :id';
-        }
-        $sql = sprintf("SELECT * FROM Medicos %s ORDER BY id ASC", $where);
-
-        $DB = new DB;
-        $stmt = $DB->prepare($sql);
-
-        if (!empty($where)) {
-            $stmt->bindParam(':id', $id, \PDO::PARAM_INT);
-        }
-
-        $stmt->execute();
-
-        $medicos = $stmt->fetchAll(\PDO::FETCH_ASSOC);
-        return $medicos;
-    }
-
 
     /**
      * Salva no banco de dados um novo usuário
      */
-    public static function save($medico)
+    public static function save($agendamento)
     {
         // validação (bem simples, só pra evitar dados vazios)
-        if (empty($medico)) {
+        if (empty($agendamento)) {
             echo "Volte e preencha todos os campos";
             return false;
         }
         // a data vem no formato dd/mm/YYYY
         // então precisamos converter para YYYY-mm-dd
-        //$isoDate = dateConvert($medico);
-
+        $isoDate = dateConvert($agendamento['data']);
         // insere no banco
         $DB = new DB;
 
-        $sql = "INSERT INTO Medicos(
-                        crm,
-                        email,
-                        nome,
-                        endereco,
-                        bairro,
-                        cidade_id,
-                        cep, 
-                        complemento, 
-                        cpf,
-                        rg,
-                        data_nascimento ,
-                        naturalidade,
-                        nacionalidade,
-                        telefone,  
-                        celular,
-                        trabalho,
-                        especialidade_id
-                        ) 
+        $sql = "INSERT INTO Agendamento(
+                      medico_id,
+                      paciente_id,
+                      hora,
+                      data, 
+                      status) 
                     VALUES(
-                        :crm,
-                        :email,
-                        :nome,
-                        :endereco,
-                        :bairro,
-                        :cidade_id,
-                        :cep, 
-                        :complemento, 
-                        :cpf,
-                        :rg,
-                        :data_nascimento ,
-                        :naturalidade,
-                        :nacionalidade,
-                        :telefone,  
-                        :celular,  
-                        :trabalho,
-                        :especialidade_id)";
+                    :medico_id,
+                    :paciente_id,
+                    :hora,
+                    :data,
+                    :status
+                    )";
 
 
         $stmt = $DB->prepare($sql);
-        $stmt->bindParam(':crm', $medico['crm']);
-        $stmt->bindParam(':email', $medico['email']);
-        $stmt->bindParam(':nome', $medico['nome']);
-        $stmt->bindParam(':endereco', $medico['endereco']);
-        $stmt->bindParam(':bairro', $medico['bairro']);
-        $stmt->bindParam(':cidade_id', $medico['cidade_id']);
-        $stmt->bindParam(':cep', $medico['cep']);
-        $stmt->bindParam(':cpf', $medico['cpf']);
-        $stmt->bindParam(':rg', $medico['rg']);
-        $stmt->bindParam(':complemento', $medico['complemento']);
-        $stmt->bindParam(':data_nascimento', $medico['data_nascimento']);
-        $stmt->bindParam(':naturalidade', $medico['naturalidade']);
-        $stmt->bindParam(':nacionalidade', $medico['nacionalidade']);
-        $stmt->bindParam(':telefone', $medico['telefone']);
-        $stmt->bindParam(':celular', $medico['celular']);
-        $stmt->bindParam(':trabalho', $medico['trabalho']);
-        $stmt->bindParam(':especialidade_id', $medico['especialidade_id']);
+        $stmt->bindParam(':medico_id', $agendamento['medico_id']);
+        $stmt->bindParam(':paciente_id', $agendamento['paciente_id']);
+        $stmt->bindParam(':hora', $agendamento['hora']);
+        $stmt->bindParam(':data', $agendamento['data']);
+        $stmt->bindValue(':status', 'A');
 
-        User::medico($medico);
         if ($stmt->execute()) {
             return true;
         } else {
@@ -162,7 +78,6 @@ class Medicos
             print_r($stmt->errorInfo());
             return false;
         }
-        return header('/medicos');
     }
 
 

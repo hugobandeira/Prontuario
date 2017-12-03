@@ -7,22 +7,29 @@
         </div>
 
         <ul class="nav">
-            <li id="medicos">
-                <a href="/medico">
-                    <i class="pe-7s-note2"></i>
-                    <p>Médico</p>
-                </a>
-            </li>
             <li id="agendamentos">
-                <a href="/medico/agenda">
+                <a href="/secretaria/agendamentos">
                     <i class="pe-7s-graph"></i>
                     <p>Agendamentos</p>
                 </a>
             </li>
             <li id="pacientes">
-                <a href="/medico/paciente">
+                <a href="/secretaria/pacientes">
                     <i class="pe-7s-user"></i>
                     <p>Pacientes</p>
+                </a>
+            </li>
+            <li id="medicos">
+                <a href="/secretaria/medicos">
+                    <i class="pe-7s-note2"></i>
+                    <p>Medicos</p>
+                </a>
+            </li>
+
+            <li id="user" class="active-pro">
+                <a href="/user">
+                    <i class="pe-7s-user"></i>
+                    <p>Usuário</p>
                 </a>
             </li>
         </ul>

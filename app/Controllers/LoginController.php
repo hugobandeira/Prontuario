@@ -39,7 +39,7 @@ class LoginController
                 header('location: /medico');
                 exit();
             } elseif ($user['nivel'] == '3') {
-                header('location: /agendamentos');
+                header('location: /secretaria');
             }
         } else {
             \App\View::make('/login/index', ['msg' => 'usuario não existe']);

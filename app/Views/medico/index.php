@@ -41,8 +41,8 @@
             <div class="col-md-4">
                 <div class="card">
                     <div class="header">
-                        <h4 class="title">Email Statistics</h4>
-                        <p class="category">Last Campaign Performance</p>
+                        <h4 class="title">Atendimentos Realizados</h4>
+                        <p class="category">Tudo dentro da empresa</p>
                     </div>
                     <div class="content">
                         <div id="chartPreferences" class="ct-chart ct-perfect-fourth"></div>
@@ -65,7 +65,7 @@
             <div class="col-md-8">
                 <div class="card">
                     <div class="header">
-                        <h4 class="title">Users Behavior</h4>
+                        <h4 class="title">Atendimendos de hoje</h4>
                         <p class="category">24 Hours performance</p>
                     </div>
                     <div class="content">
