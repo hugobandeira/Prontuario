@@ -33,7 +33,7 @@
                                             <?php endif; ?>
                                         </td>
                                         <td>
-                                            <a href="/medico/paciente/historio"
+                                            <a href="/medico/historico/<?= $agenda['id'] ?>"
                                                class="btn btn-fill btn-sm btn-info">
                                                 Histórico
                                             </a>

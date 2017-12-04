@@ -28,6 +28,8 @@
     <link href="/public_html/css/pe-icon-7-stroke.css" rel="stylesheet"/>
 
     <script src="/public_html/js/jquery-3.2.1.min.js"></script>
+    <link href="/public_html/sweet-alert2/sweetalert2.min.css" rel="stylesheet" type="text/css"/>
+    <script src="/public_html/sweet-alert2/sweetalert2.min.js"></script>
 
 
 </head>

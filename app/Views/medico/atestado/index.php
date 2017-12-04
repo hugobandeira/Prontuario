@@ -39,6 +39,13 @@
                 .done(function (data) {
                     console.log(data);
                 }).success(function () {
+                swal({
+                    position: 'top-right',
+                    type: 'success',
+                    title: 'Cadastro feito com suceso',
+                    showConfirmButton: false,
+                    timer: 1500
+                });
                 window.close();
             });
         }

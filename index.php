@@ -153,6 +153,12 @@ $route->group('/medico', function () use ($route) {
         $medico->index();
     });
 
+    $route->get('/historico/{id}', function ($request) {
+        $id = $request->getAttribute('id');
+        $historico = new \App\Controllers\HistoricoController();
+        $historico->index($id);
+    });
+
     //PACIENTES RELACIONADOS AO MEDICO
     $route->get('/paciente', function () {
         $medicoPaciente = new \App\Controllers\MedicoPacienteController();

@@ -7,7 +7,7 @@
                     <br>
                     <div class="pull-left col-md-2">
                         <a href="/medico/agenda">
-                            <button id="btnNovo" class="btn btn-fill btn-sm btn-info" data-toggle="modal"
+                            <button id="btnNovo" class="btn btn-fill btn-sm btn-fill" data-toggle="modal"
                                     data-target="#myModal">
                                 <strong> Voltar</strong>
                             </button>
@@ -20,7 +20,6 @@
                         <p class="category">Paciente</p>
                     </div>
                     <div class="content">
-
                         <div class="row">
                             <div class="col-md-2">
                                 <button id="sinais" class="btn btn-info btn-fill">
