@@ -130,22 +130,32 @@ $route->group('/medico', function () use ($route) {
 
 
     $route->get('/prescricao', function () {
-        $atende = new \App\Controllers\AtenderMedicoController();
-        $atende->store();
+        $precricao = new \App\Controllers\PrescricaoController();
+        $precricao->index();
     });
     $route->post('/prescricao/add', function () {
-        $atende = new \App\Controllers\AtenderMedicoController();
-        $atende->store();
+        $precricao = new \App\Controllers\PrescricaoController();
+        $precricao->store();
     });
 
-//    $route->get('/evolucao', function () {
-//        $atende = new \App\Controllers\AtenderMedicoController();
-//        $atende->store();
-//    });
-//    $route->get('/evolucao', function () {
-//        $atende = new \App\Controllers\AtenderMedicoController();
-//        $atende->store();
-//    });
+
+    $route->get('/evolucao', function () {
+        $evolucao = new \App\Controllers\EvolucaoController();
+        $evolucao->index();
+    });
+    $route->post('/evolucao/add', function () {
+        $evolucao = new \App\Controllers\EvolucaoController();
+        $evolucao->store();
+    });
+
+    $route->get('/atestado', function () {
+        $atestado = new \App\Controllers\AtestadoController();
+        $atestado->index();
+    });
+    $route->post('/atestado/add', function () {
+        $atestado = new \App\Controllers\AtestadoController();
+        $atestado->store();
+    });
 
 });
 

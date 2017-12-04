@@ -3,15 +3,15 @@
  * Created by PhpStorm.
  * User: hugo
  * Date: 12/3/17
- * Time: 6:46 PM
+ * Time: 9:42 PM
  */
 
 namespace App\Controllers;
 
-use App\Models\Prescricao;
-use \App\View;
+use App\Models\Atestado;
+use App\View;
 
-class PrescricaoController
+class AtestadoController
 {
     public function __construct()
     {
@@ -20,14 +20,14 @@ class PrescricaoController
 
     public function index()
     {
-        return View::make('/medico/prescricao/index');
+        return View::make('/medico/atestado/index');
     }
 
     public function store()
     {
-        $prescricao = $_POST;
+        $atesado = $_POST;
         $agendamento_id = $_SESSION['agendamento_id'];
-        if (Prescricao::save($prescricao, $agendamento_id)) {
+        if (Atestado::save($atesado, $agendamento_id)) {
             return true;
         }
     }

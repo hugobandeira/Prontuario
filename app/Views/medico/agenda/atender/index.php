@@ -37,9 +37,14 @@
                                     Prescrição médica
                                 </button>
                             </div>
-                            <div class="col-md-3">
+                            <div class="col-md-2">
                                 <button id="evolucao" class="btn btn-info btn-fill">
                                     Evolução do paciente
+                                </button>
+                            </div>
+                            <div class="col-md-1">
+                                <button id="atestado" class="btn btn-info btn-fill">
+                                    Atestado
                                 </button>
                             </div>
                         </div>
@@ -166,12 +171,17 @@
             'DIRECTORIES=NO, RESISABLE=NO, SCROLLBARS=YES, TOP=10, LEFT=10, WIDTH=800, HEIGHT=600');
     });
     $('#prescricao').click(function popUp() {
-        window.open('/sinais?feedback',
+        window.open('/medico/prescricao?feedback',
             'Titulo da Janela', 'STATUS=NO, TOOLBAR=NO, LOCATION=NO,' +
             'DIRECTORIES=NO, RESISABLE=NO, SCROLLBARS=YES, TOP=10, LEFT=10, WIDTH=800, HEIGHT=600');
     });
     $('#evolucao').click(function popUp() {
-        window.open('/sinais?feedback',
+        window.open('/medico/evolucao?feedback',
+            'Titulo da Janela', 'STATUS=NO, TOOLBAR=NO, LOCATION=NO,' +
+            'DIRECTORIES=NO, RESISABLE=NO, SCROLLBARS=YES, TOP=10, LEFT=10, WIDTH=800, HEIGHT=600');
+    });
+    $('#atestado').click(function popUp() {
+        window.open('/medico/atestado?feedback',
             'Titulo da Janela', 'STATUS=NO, TOOLBAR=NO, LOCATION=NO,' +
             'DIRECTORIES=NO, RESISABLE=NO, SCROLLBARS=YES, TOP=10, LEFT=10, WIDTH=800, HEIGHT=600');
     });

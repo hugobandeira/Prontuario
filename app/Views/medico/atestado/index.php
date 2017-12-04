@@ -5,15 +5,15 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="header">
-                        <h4 class="title"><strong>Prescrição médica</strong></h4>
+                        <h4 class="title"><strong>Atestado</strong></h4>
                     </div>
                     <div class="content">
                         <form method="post" action="/medico/hipotese/add">
                             <div class="row">
                                 <div class="col-md-5">
                                     <div class="form-group">
-                                        <label>Prescrição (texto livre)</label>
-                                        <textarea id="prescricao" name="hipotese" class="form-control"
+                                        <label>Atestado(texto livre)</label>
+                                        <textarea id="atestado" name="hipotese" class="form-control"
                                                   rows="7"></textarea>
                                     </div>
                                 </div>
@@ -34,12 +34,10 @@
 <script>
     $("#enviar").click(function (e) {
             e.preventDefault();
-            var prescricao = $("#prescricao").val();
-
-            $.post("/medico/prescricao/add", {prescricao: prescricao})
+            var atestado = $("#atestado").val();
+            $.post("/medico/atestado/add", {atestado: atestado})
                 .done(function (data) {
                     console.log(data);
-                    alert(data)
                 }).success(function () {
                 window.close();
             });
