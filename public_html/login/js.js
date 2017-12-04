@@ -26,7 +26,7 @@ $(function(){
 
             //show avatar
             $(".avatar").css({
-                "background-image": "url('http://api.randomuser.me/0.3.2/portraits/women/35.jpg')"
+                "background-image": "url('http://localhost:8000/public_html/img/favicon.png')"
             });
         } else {
             //remove success mesage replaced with error message

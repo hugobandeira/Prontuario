@@ -18,6 +18,29 @@ class AgendarSecretaria
         if (!empty($id)) {
             $where = 'WHERE id = :id';
         }
+        $sql = sprintf("SELECT Medicos.nome as medico, Paci.nome as paciente, Agendamento.*
+FROM Agendamento
+  INNER JOIN Medicos ON Agendamento.medico_id = Medicos.id
+  INNER JOIN Paci ON Agendamento.paciente_id = Paci.id %s ORDER BY id ASC", $where);
+
+        $DB = new DB;
+        $stmt = $DB->prepare($sql);
+
+        if (!empty($where)) {
+            $stmt->bindParam(':id', $id, \PDO::PARAM_INT);
+        }
+
+        $stmt->execute();
+        $agendamento = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+        return $agendamento;
+    }
+
+    public static function show($id = null)
+    {
+        $where = '';
+        if (!empty($id)) {
+            $where = 'WHERE id = :id';
+        }
         $sql = sprintf("SELECT * from Agendamento %s ORDER BY id ASC", $where);
 
         $DB = new DB;
@@ -31,6 +54,7 @@ class AgendarSecretaria
         $agendamento = $stmt->fetchAll(\PDO::FETCH_ASSOC);
         return $agendamento;
     }
+
 
     /**
      * Salva no banco de dados um novo usuário

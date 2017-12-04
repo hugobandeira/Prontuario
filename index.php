@@ -257,7 +257,7 @@ $route->group('/secretaria', function () use ($route) {
         $route->get('/delete/{id}', function ($request) {
             $id = $request->getAttribute('id');
             $secretaria = new \App\Controllers\PacientesSecretariaController();
-            $secretaria->update();
+            $secretaria->delete($id);
         });
     });
 
@@ -290,6 +290,39 @@ $route->group('/secretaria', function () use ($route) {
             $agendamento->delete($id);
         });
     });
+
+
+    $route->group('/medicos', function () use ($route) {
+        $route->get('', function () {
+            $medico = new \App\Controllers\MedicoSecretaria();
+            $medico->index();
+        });
+        $route->get('/add', function () {
+            $MedicosController = new \App\Controllers\MedicosController();
+            $MedicosController->create();
+        });
+        $route->post('/add', function () {
+            $MedicosController = new \App\Controllers\MedicosController();
+            $MedicosController->store();
+        });
+        $route->get('/edit/{id}', function ($request) {
+            $id = $request->getAttribute('id');
+            $MedicosController = new \App\Controllers\MedicosController();
+            $MedicosController->show($id);
+        });
+        $route->post('/edit', function ($request) {
+            $MedicosController = new \App\Controllers\MedicosController();
+            $MedicosController->update();
+        });
+
+        $route->get('/delete/{id}', function ($request) {
+            $id = $request->getAttribute('id');
+            $MedicosController = new \App\Controllers\MedicosController();
+            $MedicosController->delete($id);
+        });
+    });
+
+
 });
 
 

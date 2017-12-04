@@ -1,4 +1,4 @@
-<div class="sidebar" data-color="purple" data-image="/public_html/img/sidebar-5.jpg">
+<div class="sidebar" data-color="black" data-image="/public_html/img/sidebar-6.jpg">
     <div class="sidebar-wrapper">
         <div class="logo">
             <a href="/" class="simple-text">

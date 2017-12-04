@@ -44,6 +44,37 @@ class PacientesSecretariaController
             header('location: /secretaria/pacientes/add');
             exit();
         }
+    }
 
+    public function show($id)
+    {
+        $paciente = Pacientes::selectAll($id)[0];
+        $cidades = Cidades::all();
+        \App\View::make('/secretaria/pacientes/edit', compact('paciente', 'cidades'));
+    }
+
+    public function update()
+    {
+        $paciente = $_POST;
+        if (Pacientes::update($paciente)) {
+            $_SESSION['msg'] = "Paciente atualizado com sucesso";
+            header('location: /secretaria/pacientes');
+            exit();
+        } else {
+            header('location: /secretaria/pacientes');
+            exit();
+        }
+    }
+
+    public function delete($id)
+    {
+        if (Pacientes::remove($id)) {
+            $_SESSION['msg'] = "Paciente apagado com sucesso";
+            header('location: /secretaria/pacientes');
+            exit;
+        } else {
+            header('location: /secretaria/pacientes');
+            exit;
+        }
     }
 }

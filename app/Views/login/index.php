@@ -14,6 +14,7 @@
     <link href="/public_html/login/css.css" rel="stylesheet"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"
           integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"
             integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn"
             crossorigin="anonymous"></script>
@@ -23,13 +24,17 @@
 <body>
 
 <div class="login-container">
-    <?php if (isset($msg)) { ?>
+    <?php if (isset($msg)): ?>
         <div class="alert alert-danger">
             <p><?= $msg ?></p>
         </div>
-    <?php } ?>
+    <?php endif; ?>
     <div id="output"></div>
-    <div class="avatar"></div>
+        <img height="100" width="100" src="/public_html/img/favicon.png">
+    <br><br>
+    <p class="font-weight-bold">Prontuario Medico</p>
+
+    <br>
     <div class="form-box">
         <form action="/" method="post">
             <input required name="user" type="text" placeholder="username">

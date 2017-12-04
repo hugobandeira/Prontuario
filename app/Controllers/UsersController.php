@@ -42,7 +42,7 @@ class UsersController
         $user = $_POST;
         if (User::save($user)) {
             $_SESSION['msg'] = "Usuário Salvo com sucesso";
-            header('Location: /user');
+            header('Location: /admin/user');
             exit;
         }
     }
@@ -70,7 +70,7 @@ class UsersController
         $user = $_POST;
         if (User::update($user)) {
             $_SESSION['msg'] = "Usuário editado com sucesso";
-            header('Location: /user');
+            header('Location: /admin/user');
             exit;
         }
     }

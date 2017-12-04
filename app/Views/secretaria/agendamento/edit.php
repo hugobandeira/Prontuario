@@ -41,7 +41,7 @@
                                                         <?php if ($agendamento['medico_id'] == $medico['id']): ?>
                                                             selected
                                                         <?php endif; ?>
-                                                            value="<?= $medico['id'] ?>"><?= $medico['nome'] ?></option>
+                                                            value="<?= $medico['id'] ?>">Dr. <?= $medico['nome'] ?></option>
                                                 <?php endforeach;
                                             endif; ?>
                                         </select>

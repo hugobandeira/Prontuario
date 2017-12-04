@@ -137,7 +137,7 @@ class Pacientes
             return true;
         } else {
             echo "Erro ao cadastrar";
-            print_r($stmt->errorInfo());
+            $_SESSION['erro'] = $stmt->errorInfo()[2];
             return false;
         }
     }
@@ -228,7 +228,7 @@ class Pacientes
             return true;
         } else {
             echo "Erro ao remover";
-            print_r($stmt->errorInfo());
+            $_SESSION['erro'] = $stmt->errorInfo()[2];
             return false;
         }
     }

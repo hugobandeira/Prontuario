@@ -27,7 +27,7 @@
                                 <th>Endereço</th>
                                 <th>TIPO SANGUÍNEO</th>
                                 <th>Cidade</th>
-                                <th width="150">Ações</th>
+                                <th width="150" class="text-center">Ações</th>
                             </tr>
                             </thead>
                             <tbody>

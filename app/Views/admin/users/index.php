@@ -7,7 +7,7 @@
                     <div class="card">
                         <br>
                         <div class="pull-right col-md-2">
-                            <a href="/user/add">
+                            <a href="/admin/user/add">
                                 <button class="btn btn-fill btn-sm btn-success">
                                     <strong> Adicionar</strong>
                                 </button>
@@ -46,11 +46,11 @@
                                             </td>
                                             <td>
                                                 <a class="btn btn-fill btn-sm btn-inverse"
-                                                   href="/user/edit/<?= $user['id'] ?>">
+                                                   href="/admin/user/edit/<?= $user['id'] ?>">
                                                     <strong>Editar</strong>
                                                 </a>
                                                 <a class="btn btn-fill btn-sm btn-danger"
-                                                   href="/user/remove/<?= $user['id']; ?>"
+                                                   href="/admin/user/remove/<?= $user['id']; ?>"
                                                    onclick="return confirm('Tem certeza de que deseja remover?');">
                                                     <strong> Deletar</strong>
                                                 </a>

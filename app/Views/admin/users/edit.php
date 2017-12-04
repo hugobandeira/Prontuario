@@ -10,7 +10,7 @@
                         </div>
 
                         <div class="content">
-                            <form method="post" action="/user/edit">
+                            <form method="post" action="/admin/user/edit">
                                 <div class="row">
                                     <div class="col-md-4">
                                         <div class="form-group">

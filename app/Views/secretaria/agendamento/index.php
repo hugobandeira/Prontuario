@@ -35,9 +35,9 @@
                                 if (isset($agendamentos)) {
                                     foreach ($agendamentos as $agendamento) { ?>
                                         <tr>
-                                            <td><?= $agendamento['paciente_id'] ?></td>
+                                            <td><?= $agendamento['paciente'] ?></td>
                                             <td><?= $agendamento['hora'] ?> / <?= $agendamento['data'] ?></td>
-                                            <td><?= $agendamento['medico_id'] ?></td>
+                                            <td><?= $agendamento['medico'] ?></td>
                                             <td>
                                                 <?php if ($agendamento['status'] == 'A'): ?>
                                                     Aguardando

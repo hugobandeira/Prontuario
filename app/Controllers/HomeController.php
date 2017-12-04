@@ -17,10 +17,11 @@ class HomeController
     {
         if ($_SESSION['nivel'] == 2) {
             \App\View::make('/medico/index');
-        } else {
-            \App\View::make('/home/index');
+        } elseif ($_SESSION['nivel'] == 3) {
+            \App\View::make('/secretaria/index');
+        } elseif ($_SESSION['nivel'] == 1) {
+            \App\View::make('/admin/index');
         }
-
     }
 
 

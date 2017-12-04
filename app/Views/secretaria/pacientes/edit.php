@@ -102,7 +102,7 @@
                                     <div class="form-group">
                                         <label>DATA NASCIMENTO</label>
                                         <input type="date" required name="data_nascimento" class="form-control"
-                                               value="<?= $paciente['data_nascimento'] ?>">
+                                               value="<?= date('Y-m-d', strtotime($paciente['data_nascimento'])) ?>">
                                     </div>
                                 </div>
                             </div>

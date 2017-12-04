@@ -9,7 +9,7 @@
                         <h4 class="title">Cadastro de Pacientes</h4>
                     </div>
                     <div class="content">
-                        <form method="post" action="/pacientes/add">
+                        <form method="post" action="/admin/pacientes/add">
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">

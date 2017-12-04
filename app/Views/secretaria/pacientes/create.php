@@ -49,7 +49,6 @@
                                     <div class="form-group">
                                         <label>Cidade</label>
                                         <select required name="cidade_id" class="form-control">
-                                            <option selected disabled>Selecione uma cidade</option>
                                             <?php foreach ($cidades as $cidade) { ?>
                                                 <option value="<?= $cidade['id'] ?>"><?= $cidade['nome'] ?>
                                                     - <?= $cidade['uf'] ?> </option>
@@ -144,9 +143,7 @@
                                     <input type="text" name="tipo_sangue" class="form-control">
                                 </div>
                             </div>
-                            <div class="row">
 
-                            </div>
                             <button type="submit" class="btn btn-info btn-fill pull-right">Salvar</button>
                             <div class="clearfix"></div>
                         </form>

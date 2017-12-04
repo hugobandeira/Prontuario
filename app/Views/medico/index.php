@@ -19,7 +19,7 @@
                     <div style="text-align: center" class="header">
                         <h4 class="title">Agendamento</h4>
                         <p class="category">lista de agendamentos</p>
-                        <a href="/medico/agendamentos" class="btn btn-primary">Veja seus agendamentos agendamento</a>
+                        <a href="/medico/agenda" class="btn btn-primary">Veja seus agendamentos agendamento</a>
                     </div>
                     <div class="content table-responsive table-full-width">
                     </div>
@@ -250,7 +250,6 @@
 
         $('#medicos').addClass('active');
         $(document).ready(function () {
-
             demo.initChartist();
         });
     </script>

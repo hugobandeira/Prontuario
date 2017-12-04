@@ -11,7 +11,7 @@
                         </div>
 
                         <div class="content">
-                            <form method="post" href="/user/add">
+                            <form method="post" href="/admin/user/add">
                                 <div class="row">
                                     <div class="col-md-4">
                                         <div class="form-group">
