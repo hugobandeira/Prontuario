@@ -4,50 +4,146 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
-                    <div class="header">
-                        <h4 class="title">Agenda</h4>
-                        <p class="category">Ordem de atendimento</p>
+                    <br>
+                    <div class="pull-left col-md-2">
+                        <a href="/medico/agenda">
+                            <button id="btnNovo" class="btn btn-fill btn-sm btn-info" data-toggle="modal"
+                                    data-target="#myModal">
+                                <strong> Voltar</strong>
+                            </button>
+                        </a>
                     </div>
-                    <div class="content table-responsive table-full-width">
-                        <table class="table table-hover table-striped">
-                            <thead>
-                            <tr>
-                                <th>Paciente</th>
-                                <th width="15%" class="text-center">Hora marcada</th>
-                                <th>Status</th>
-                                <th width="19%" class="text-center">Ações</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <?php if (isset($agendas)):
-                                foreach ($agendas as $agenda): ?>
-                                    <tr>
-                                        <td><?= $agenda['paciente'] ?></td>
-                                        <td><?= date('H:m d/m', strtotime($agenda['data_hora'])) ?></td>
-                                        <td>
-                                            <?php if ($agenda['status'] == 'A'): ?>
-                                                Aguardando
-                                            <?php elseif ($agenda['status'] == 'F'): ?>
-                                                Finalizado
-                                            <?php endif; ?>
-                                        </td>
-                                        <td>
-                                            <a href="/medico/paciente/historio"
-                                               class="btn btn-fill btn-sm btn-info">
-                                                Histórico
-                                            </a>
-                                            <a href="/medico/paciente/historio"
-                                               class="btn btn-fill btn-sm btn-success">
-                                                Atender
-                                            </a>
-                                        </td>
-                                    </tr>
-                                    <?php
-                                endforeach;
-                            endif; ?>
+                    <br>
+                    <br>
+                    <div class="header">
+                        <h4 class="title">Atender paciente</h4>
+                        <p class="category">Paciente</p>
+                    </div>
+                    <div class="content">
 
-                            </tbody>
-                        </table>
+                        <div class="row">
+                            <div class="col-md-2">
+                                <button id="sinais" class="btn btn-info btn-fill">
+                                    Sinais vitais
+                                </button>
+                            </div>
+                            <div class="col-md-3">
+                                <button id="hipotese" class="btn btn-info btn-fill">
+                                    Hipótese diagnostico
+                                </button>
+                            </div>
+                            <div class="col-md-3">
+                                <button id="prescricao" class="btn btn-info btn-fill">
+                                    Prescrição médica
+                                </button>
+                            </div>
+                            <div class="col-md-3">
+                                <button id="evolucao" class="btn btn-info btn-fill">
+                                    Evolução do paciente
+                                </button>
+                            </div>
+                        </div>
+                        <br>
+
+                        <form method="post" action="/medico/agenda/atende/add">
+                            <div class="row">
+                                <input type="hidden" name="agendamento_id" value="<?= $agendamento_id ?>">
+                                <div class="col-md-5">
+                                    <div class="form-group">
+                                        <label>Queixa principal</label>
+                                        <input name="queixa_principal" type="text" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-md-7">
+                                    <div class="form-group">
+                                        <label for="email">PROBLEMAS RENAIS</label>
+                                        <input type="text" name="pr_renais" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>Problemas Articulares</label>
+                                        <input type="text" name="pr_articulares" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Problemas Cardiacos</label>
+                                        <input type="text" name="pr_cariacos" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label>Problemas respiratório</label>
+                                        <input type="text" name="pr_respiratorios" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label>Problemas Gastricos</label>
+                                        <input type="text" name="pr_gastricos" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>Alergias</label>
+                                        <input type="text" name="alergias" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <label>Hepatite</label>
+                                        <input required type="checkbox" name="hepatite">
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <label>Gravides</label>
+                                        <input required type="checkbox" name="gravides">
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <label>Diabetes</label>
+                                        <input required type="checkbox" name="diabetes">
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>PROBLEMAS DE CICATRIZAÇÃO</label>
+                                        <input required type="checkbox" name="pr_cicatrizacao">
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>UTILIZA MEDICAMENTOS</label>
+                                        <input type="text" name="ultiliza_med" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-10">
+                                    <button type="submit" class="btn btn-info btn-fill pull-right">Salvar</button>
+                                </div>
+                                <div class="col-md-2">
+                                    <button href="/medicos" class="btn btn-danger btn-fill">Cancelar</button>
+                                </div>
+                            </div>
+                            <div class="clearfix"></div>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -58,6 +154,28 @@
 
 <script>
     $('#agendamentos').addClass('active');
+
+    $('#sinais').click(function popUp() {
+        window.open('/medico/sinais?feedback',
+            'Titulo da Janela', 'STATUS=NO, TOOLBAR=NO, LOCATION=NO,' +
+            'DIRECTORIES=NO, RESISABLE=NO, SCROLLBARS=YES, TOP=10, LEFT=10, WIDTH=800, HEIGHT=600');
+    });
+    $('#hipotese').click(function popUp() {
+        window.open('/medico/hipotese?feedback',
+            'Titulo da Janela', 'STATUS=NO, TOOLBAR=NO, LOCATION=NO,' +
+            'DIRECTORIES=NO, RESISABLE=NO, SCROLLBARS=YES, TOP=10, LEFT=10, WIDTH=800, HEIGHT=600');
+    });
+    $('#prescricao').click(function popUp() {
+        window.open('/sinais?feedback',
+            'Titulo da Janela', 'STATUS=NO, TOOLBAR=NO, LOCATION=NO,' +
+            'DIRECTORIES=NO, RESISABLE=NO, SCROLLBARS=YES, TOP=10, LEFT=10, WIDTH=800, HEIGHT=600');
+    });
+    $('#evolucao').click(function popUp() {
+        window.open('/sinais?feedback',
+            'Titulo da Janela', 'STATUS=NO, TOOLBAR=NO, LOCATION=NO,' +
+            'DIRECTORIES=NO, RESISABLE=NO, SCROLLBARS=YES, TOP=10, LEFT=10, WIDTH=800, HEIGHT=600');
+    });
+
 </script>
 
 <?php include __DIR__ . '/../../../layouts/rodape.php'; ?>

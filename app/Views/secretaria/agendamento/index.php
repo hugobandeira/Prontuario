@@ -73,7 +73,7 @@
 
     <script src="/public_html/js/jquery-3.2.1.min.js"></script>
     <script>
-        $('#medicos').addClass('active')
+        $('#agendamentos').addClass('active')
     </script>
 
 <?php include __DIR__ . "/../../layouts/rodape.php"; ?>

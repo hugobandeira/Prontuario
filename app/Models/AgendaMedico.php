@@ -15,11 +15,10 @@ class AgendaMedico
     public static function all($id = null)
     {
         $medico = Medicos::medico($id);
-
         $sql = sprintf("
 SELECT Medicos.nome as medico, Paci.nome as paciente, Agendamento.* from Agendamento
   INNER JOIN Medicos on Agendamento.medico_id = Medicos.id 
-  INNER JOIN Paci on Agendamento.paciente_id = Paci.id  WHERE medico_id = :id ORDER BY data_hora ASC");
+  INNER JOIN Paci on Agendamento.paciente_id = Paci.id  WHERE medico_id = :id AND status != 'F' ORDER BY data ASC");
 
         $DB = new DB;
         $stmt = $DB->prepare($sql);

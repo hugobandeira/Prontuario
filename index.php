@@ -87,7 +87,6 @@ $route->group('/medico', function () use ($route) {
         $medico->index();
     });
 
-
     //PACIENTES RELACIONADOS AO MEDICO
     $route->get('/paciente', function () {
         $medicoPaciente = new \App\Controllers\MedicoPacienteController();
@@ -99,9 +98,54 @@ $route->group('/medico', function () use ($route) {
         $agenda->index();
     });
 
-    $route->get('/agenda/atende', function () {
-
+    $route->get('/agenda/atende/{id}', function ($request) {
+        $id = $request->getAttribute('id');
+        $atende = new \App\Controllers\AtenderMedicoController();
+        $atende->index($id);
     });
+    $route->post('/agenda/atende/add', function () {
+        $atende = new \App\Controllers\AtenderMedicoController();
+        $atende->store();
+    });
+
+
+    $route->get('/sinais', function () {
+        $sinais = new App\Controllers\SinaisController();
+        $sinais->index();
+    });
+    $route->post('/sinais/add', function () {
+        $sinais = new App\Controllers\SinaisController();
+        $sinais->store();
+    });
+
+
+    $route->get('/hipotese', function () {
+        $hipotese = new \App\Controllers\HipoteseController();
+        $hipotese->index();
+    });
+    $route->post('/hipotese/add', function () {
+        $hipotese = new \App\Controllers\HipoteseController();
+        $hipotese->store();
+    });
+
+
+    $route->get('/prescricao', function () {
+        $atende = new \App\Controllers\AtenderMedicoController();
+        $atende->store();
+    });
+    $route->post('/prescricao/add', function () {
+        $atende = new \App\Controllers\AtenderMedicoController();
+        $atende->store();
+    });
+
+//    $route->get('/evolucao', function () {
+//        $atende = new \App\Controllers\AtenderMedicoController();
+//        $atende->store();
+//    });
+//    $route->get('/evolucao', function () {
+//        $atende = new \App\Controllers\AtenderMedicoController();
+//        $atende->store();
+//    });
 
 });
 
@@ -111,6 +155,11 @@ $route->group('/secretaria', function () use ($route) {
         $secretaria->index();
     });
 
+    $route->group('/pacientes', function () use ($route) {
+        $route->get('', function () {
+
+        });
+    });
     $route->group('/agendamentos', function () use ($route) {
         $route->get('', function () {
             $agendamento = new \App\Controllers\AgendaSecretariaController();

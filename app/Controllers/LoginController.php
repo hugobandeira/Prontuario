@@ -40,6 +40,7 @@ class LoginController
                 exit();
             } elseif ($user['nivel'] == '3') {
                 header('location: /secretaria');
+                exit();
             }
         } else {
             \App\View::make('/login/index', ['msg' => 'usuario não existe']);

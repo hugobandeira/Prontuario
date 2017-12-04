@@ -11,9 +11,6 @@
 <!--  Notifications Plugin    -->
 <script src="/public_html/js/bootstrap-notify.js"></script>
 
-<!--  Google Maps Plugin    -->
-<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
-
 <!-- Light Bootstrap Table Core javascript and methods for Demo purpose -->
 <script src="/public_html/js/light-bootstrap-dashboard.js"></script>
 
