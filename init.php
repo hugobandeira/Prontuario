@@ -10,10 +10,10 @@
 define('BASE_PATH', dirname(__FILE__));
 
 // credenciais de acesso ao MySQL
-define('MYSQL_HOST', '127.0.0.1');
-define('MYSQL_USER', 'root');
-define('MYSQL_PASS', '');
-define('MYSQL_DBNAME', 'Prontuario');
+define('MYSQL_HOST', 'mysql762.umbler.com:41890');
+define('MYSQL_USER', 'prontuariohugo');
+define('MYSQL_PASS', 'hugo1234');
+define('MYSQL_DBNAME', 'prontuariohugo');
 
 // configurações do PHP
 ini_set('display_errors', true);
