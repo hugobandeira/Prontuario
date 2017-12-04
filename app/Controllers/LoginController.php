@@ -15,7 +15,7 @@ class LoginController
     {
         //var_dump($_SESSION);
         if (isset($_SESSION['nome'])) {
-            header('location: /home');
+            header('location: /admin/home');
             exit();
         } else {
             \App\View::make('login/index');
@@ -33,7 +33,7 @@ class LoginController
             $_SESSION['nome'] = strtoupper($user['name']);
             $_SESSION['nivel'] = $user['nivel'];
             if ($user['nivel'] == '1') {
-                header('location: /home');
+                header('location: /admin/home');
                 exit;
             } elseif ($user['nivel'] == '2') {
                 header('location: /medico');

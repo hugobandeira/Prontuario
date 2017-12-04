@@ -45,7 +45,6 @@ class AtendimentoMedico
             return false;
         }
 
-        var_dump($atendimento);
         // insere no banco
         $DB = new DB;
 
@@ -79,7 +78,6 @@ class AtendimentoMedico
                         :ultiliza_med)";
 
 
-
         $stmt = $DB->prepare($sql);
 
         $stmt->bindParam(':agendamento_id', $atendimento['agendamento_id']);
@@ -95,6 +93,33 @@ class AtendimentoMedico
         $stmt->bindParam(':diabetes', $atendimento['diabetes']);
         $stmt->bindParam(':pr_cicatrizacao', $atendimento['pr_articulares']);
         $stmt->bindParam(':ultiliza_med', $atendimento['ultiliza_med']);
+
+        self::alterAgendamento($atendimento['agendamento_id']);
+
+        if ($stmt->execute()) {
+            return true;
+        } else {
+            echo "Erro ao cadastrar";
+            print_r($stmt->errorInfo());
+            return false;
+        }
+    }
+
+
+    public static function alterAgendamento($id)
+    {
+        // validação (bem simples, só pra evitar dados vazios)
+        if (empty($id)) {
+            echo "Volte e preencha todos os campos";
+            return false;
+        }
+
+        // insere no banco
+        $DB = new DB;
+        $sql = "UPDATE Agendamento SET status= :status WHERE id = :id";
+        $stmt = $DB->prepare($sql);
+        $stmt->bindValue(':status', 'F');
+        $stmt->bindParam(':id', $id, \PDO::PARAM_INT);
 
         if ($stmt->execute()) {
             return true;

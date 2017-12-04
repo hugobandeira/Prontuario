@@ -79,12 +79,13 @@ class User
 
         // insere no banco
         $DB = new DB;
-        $sql = "INSERT INTO users(id, name, email, senha ) VALUES(:id ,:name , :email, :senha)";
+        $sql = "INSERT INTO users(id, name, email, senha, nivel) VALUES(:id ,:name , :email, :senha, :nivel)";
         $stmt = $DB->prepare($sql);
         $stmt->bindParam(':id', $medico['crm']);
         $stmt->bindParam(':name', $medico['nome']);
         $stmt->bindParam(':email', $medico['email']);
         $stmt->bindParam(':senha', $senha);
+        $stmt->bindValue(':nivel', '2');
 
         if ($stmt->execute()) {
             return true;

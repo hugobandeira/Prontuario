@@ -13,16 +13,14 @@
                             <thead>
                             <tr>
                                 <th width="300">Paciente</th>
-                                <th width="400" class="text-center">Medico</th>
-                                <th width="10" class="text-center">Ações</th>
+                                <th width="10%" class="text-center">Ações</th>
                             </tr>
                             </thead>
                             <tbody>
                             <?php if (isset($pacientes)):
                                 foreach ($pacientes as $paciente): ?>
                                     <tr>
-                                        <td><?= $paciente['paciente'] ?></td>
-                                        <td>Dr. <?= $paciente['medico'] ?></td>
+                                        <td><?= $paciente['nome'] ?></td>
                                         <td>
                                             <a href="/medico/paciente/historio"
                                                class="btn btn-fill btn-sm btn-info">

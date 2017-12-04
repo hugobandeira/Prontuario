@@ -9,19 +9,19 @@
         <ul class="nav">
             <li id="medicos">
                 <a href="/medico">
-                    <i class="pe-7s-note2"></i>
-                    <p>Médico</p>
+                    <i class="pe-7s-graph"></i>
+                    <p>Inicio</p>
                 </a>
             </li>
             <li id="agendamentos">
                 <a href="/medico/agenda">
-                    <i class="pe-7s-graph"></i>
+                    <i class="pe-7s-note2"></i>
                     <p>Agendamentos</p>
                 </a>
             </li>
             <li id="pacientes">
                 <a href="/medico/paciente">
-                    <i class="pe-7s-user"></i>
+                    <i class="pe-7s-users"></i>
                     <p>Pacientes</p>
                 </a>
             </li>

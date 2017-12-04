@@ -1,4 +1,4 @@
-<?php include __DIR__ . "/../../layouts/cabecalho.php"; ?>
+<?php include __DIR__ . "/../../layouts/cabecalho-secretaria.php"; ?>
 
 <div class="content">
     <div class="container-fluid">
@@ -10,7 +10,7 @@
                     </div>
                     <?php include __DIR__ . "/../../layouts/msg.php" ?>
                     <div class="content">
-                        <form method="post" action="/admin/pacientes/edit">
+                        <form method="post" action="/secretaria/pacientes/edit">
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
@@ -161,11 +161,10 @@
                                     <button type="submit" class="btn btn-info btn-fill pull-right">Salvar</button>
                                 </div>
                                 <div class="col-md-2">
-                                    <a href="/admin/pacientes" class="btn btn-danger btn-fill">Cancelar</a>
+                                    <a href="/secretaria/pacientes" class="btn btn-danger btn-fill">Cancelar</a>
                                 </div>
                             </div>
                             <div class="clearfix"></div>
-
                         </form>
                     </div>
                 </div>
@@ -173,7 +172,6 @@
         </div>
     </div>
 </div>
-<script src="/public_html/js/jquery-3.2.1.min.js"></script>
 <script>
     $('#pacientes').addClass('active')
 </script>

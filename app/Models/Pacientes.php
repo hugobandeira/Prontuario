@@ -73,25 +73,6 @@ class Pacientes
         // insere no banco
         $DB = new DB;
 
-//  `nome` varchar(45) NOT NULL,
-//  `endereco` varchar(105) DEFAULT NULL,
-//  `bairro` varchar(45) DEFAULT NULL,
-//  `cidades` varchar(45) DEFAULT NULL,
-//  `estado` varchar(45) DEFAULT NULL,
-//  `cep` varchar(45) DEFAULT NULL,
-//  `complemento` varchar(45) DEFAULT NULL,
-//  `cpf` int(11) NOT NULL,
-//  `rg` int(11) NOT NULL,
-//  `data_nascimento` date NOT NULL,
-//  `naturalidade` varchar(45) DEFAULT NULL,
-//  `nacionalidade` varchar(45) DEFAULT NULL,
-//  `email` varchar(45) DEFAULT NULL,
-//  `telefone` int(11) DEFAULT NULL,
-//  `telefone_trabalho` int(11) DEFAULT NULL,
-//  `nome_pai` varchar(45) DEFAULT NULL,
-//  `nome_mae` varchar(45) DEFAULT NULL,
-//  `tipo_sangue` varchar(45) NOT NULL
-
         $sql = "INSERT INTO Paci(
                             nome, 
                             endereco,
@@ -131,6 +112,7 @@ class Pacientes
                             :nome_pai,
                             :nome_mae,
                             :tipo_sangue)";
+
         $stmt = $DB->prepare($sql);
         $stmt->bindParam(':nome', $pacientes['nome']);
         $stmt->bindParam(':endereco', $pacientes['endereco']);
@@ -178,25 +160,6 @@ class Pacientes
         // insere no banco
         $DB = new DB;
 
-//        nome` varchar(45) NOT NULL,
-//  `endereco` varchar(105) DEFAULT NULL,
-//  `bairro` varchar(45) DEFAULT NULL,
-//  `cidades` varchar(45) DEFAULT NULL,
-//  `estado` varchar(45) DEFAULT NULL,
-//  `cep` varchar(45) DEFAULT NULL,
-//  `complemento` varchar(45) DEFAULT NULL,
-//  `cpf` int(11) NOT NULL,
-//  `rg` int(11) NOT NULL,
-//  `data_nascimento` date NOT NULL,
-//  `naturalidade` varchar(45) DEFAULT NULL,
-//  `nacionalidade` varchar(45) DEFAULT NULL,
-//  `email` varchar(45) DEFAULT NULL,
-//  `telefone` int(11) DEFAULT NULL,
-//  `telefone_trabalho` int(11) DEFAULT NULL,
-//  `nome_pai` varchar(45) DEFAULT NULL,
-//  `nome_mae` varchar(45) DEFAULT NULL,
-//  `tipo_sangue` varchar(45) NOT NULL
-
         $sql = "UPDATE Paci SET 
                             nome = :nome, 
                             endereco = :endereco,
@@ -242,7 +205,7 @@ class Pacientes
             return true;
         } else {
             echo "Erro ao cadastrar";
-            print_r($stmt->errorInfo());
+            $_SESSION['erro'] = $stmt->errorInfo()[2];
             return false;
         }
     }

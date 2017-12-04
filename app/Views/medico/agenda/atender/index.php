@@ -107,25 +107,25 @@
                                 <div class="col-md-2">
                                     <div class="form-group">
                                         <label>Hepatite</label>
-                                        <input required type="checkbox" name="hepatite">
+                                        <input type="checkbox" name="hepatite" value="1">
                                     </div>
                                 </div>
                                 <div class="col-md-2">
                                     <div class="form-group">
                                         <label>Gravides</label>
-                                        <input required type="checkbox" name="gravides">
+                                        <input type="checkbox" name="gravides" value="1">
                                     </div>
                                 </div>
                                 <div class="col-md-2">
                                     <div class="form-group">
                                         <label>Diabetes</label>
-                                        <input required type="checkbox" name="diabetes">
+                                        <input type="checkbox" name="diabetes" value="1">
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>PROBLEMAS DE CICATRIZAÇÃO</label>
-                                        <input required type="checkbox" name="pr_cicatrizacao">
+                                        <input type="checkbox" name="pr_cicatrizacao" value="1">
                                     </div>
                                 </div>
                             </div>
@@ -144,7 +144,7 @@
                                     <button type="submit" class="btn btn-info btn-fill pull-right">Salvar</button>
                                 </div>
                                 <div class="col-md-2">
-                                    <button href="/medicos" class="btn btn-danger btn-fill">Cancelar</button>
+                                    <a href="/medico/agenda" class="btn btn-danger btn-fill">Cancelar</a>
                                 </div>
                             </div>
                             <div class="clearfix"></div>

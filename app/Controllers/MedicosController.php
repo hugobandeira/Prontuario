@@ -21,7 +21,6 @@ class MedicosController
         if ($_SESSION['nivel'] == '1') {
             $medicos = array(Medicos::selectAll());
             \App\View::make('/admin/medicos/index', ['medicos' => $medicos]);
-
         } else {
             header('location: /home');
             exit();
@@ -43,11 +42,12 @@ class MedicosController
         $medico = $_POST;
 
         if (Medicos::save($medico)) {
-            $_SESSION['msg'] = "Médico Salvo com sucesso";
-            header('location: /medicos');
+            $_SESSION['msg'] = "Cadastro efetuado com sucesso";
+            header('location: /admin/medicos');
             exit();
         } else {
-            return "erro";
+            header('location: /admin/medicos/add');
+            exit();
         }
     }
 
@@ -63,16 +63,20 @@ class MedicosController
     {
         $medico = $_POST;
         if (Medicos::update($medico)) {
-            header('Location: /medicos');
+            $_SESSION['msg'] = "Medico atualizado com sucesso";
+            header('Location: /admin/medicos');
             exit;
-        };
+        } else {
+            header('location: /admin/medicos');
+            exit();
+        }
 
     }
 
     public function delete($id)
     {
         if (Medicos::remove($id)) {
-            header('Location: http://localhost:8000/medicos');
+            header('Location: /admin/medicos');
             exit;
         }
 

@@ -9,7 +9,7 @@
                         <h4 class="title">Editar Médico</h4>
                     </div>
                     <div class="content">
-                        <form method="post" action="/medicos/edit">
+                        <form method="post" action="/admin/medicos/edit">
                             <div class="row">
                                 <div class="col-md-5">
                                     <div class="form-group">
@@ -159,7 +159,7 @@
                                     <button type="submit" class="btn btn-info btn-fill pull-right">Salvar</button>
                                 </div>
                                 <div class="col-md-2">
-                                    <a href="/medicos" class="btn btn-danger btn-fill">Cancelar</a>
+                                    <a href="/admin/medicos" class="btn btn-danger btn-fill">Cancelar</a>
                                 </div>
                             </div>
                             <div class="clearfix"></div>

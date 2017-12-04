@@ -8,26 +8,26 @@
 
         <ul class="nav">
             <li id="agendamentos">
-                <a href="/agendamentos">
+                <a href="/admin/agendamentos">
                     <i class="pe-7s-graph"></i>
                     <p>Agendamentos</p>
                 </a>
             </li>
             <li id="pacientes">
-                <a href="/pacientes">
+                <a href="/admin/pacientes">
                     <i class="pe-7s-user"></i>
                     <p>Pacientes</p>
                 </a>
             </li>
             <li id="medicos">
-                <a href="/medicos">
+                <a href="/admin/medicos">
                     <i class="pe-7s-note2"></i>
                     <p>Medicos</p>
                 </a>
             </li>
 
             <li id="user" class="active-pro">
-                <a href="/user">
+                <a href="/admin/user">
                     <i class="pe-7s-user"></i>
                     <p>Usuário</p>
                 </a>

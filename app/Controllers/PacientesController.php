@@ -39,10 +39,13 @@ class PacientesController
     {
         $paciente = $_POST;
         if (Pacientes::save($paciente)) {
-            header('location: /pacientes');
+            $_SESSION['msg'] = "Cadastro efetuado com sucesso";
+            header('location: /admin/pacientes');
             exit();
         } else {
-            return "erro";
+            $_SESSION['erro'] = "Erro ao cadastrar";
+            header('location: /admin/pacientes/add');
+            exit();
         }
 
     }
@@ -59,15 +62,20 @@ class PacientesController
     {
         $paciente = $_POST;
         if (Pacientes::update($paciente)) {
-            header('Location: http://localhost:8000/pacientes');
-            exit;
-        };
+            $_SESSION['msg'] = "Paciente atualizado com sucesso";
+            header('location: /admin/pacientes');
+            exit();
+        } else {
+            $_SESSION['erro'] = "Erro ao cadastrar";
+            header('location: /admin/pacientes');
+            exit();
+        }
     }
 
     public function delete($id)
     {
         if (Pacientes::remove($id)) {
-            header('Location: http://localhost:8000/pacientes');
+            header('/admin/pacientes');
             exit;
         }
     }

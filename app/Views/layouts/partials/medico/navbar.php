@@ -7,25 +7,17 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/home">HOME</a>
+            <a class="navbar-brand" href="/medico">Pagina inicial</a>
 
         </div>
         <div class="collapse navbar-collapse">
             <ul class="nav navbar-nav navbar-left">
-                <li>
-                    <a href="/" class="dropdown-toggle" data-toggle="dropdown">
-                        <i class="fa fa-dashboard">
-                            <p class="hidden-lg hidden-md">Dashboard</p>
-                        </i>
-                    </a>
-                </li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         <i class="fa fa-globe"></i>
                         <b class="caret hidden-sm hidden-xs"></b>
                         <span class="notification hidden-sm hidden-xs">5</span>
                         <p class="hidden-lg hidden-md">
-                            5 Agendamentos
                             <b class="caret"></b>
                         </p>
                     </a>
@@ -37,34 +29,23 @@
                         <li><a href="#">Another notification</a></li>
                     </ul>
                 </li>
-                <li>
-                    <a href="">
-                        <i class="fa fa-search"></i>
-                        <p class="hidden-lg hidden-md">Search</p>
-                    </a>
-                </li>
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
-
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         <p>
                             <i class="pe-7s-user"></i>
-                            <?php if (isset($_SESSION['nome'])) {
+                            <?php if (isset($_SESSION['nome'])):
                                 echo $_SESSION['nome'];
-                            } else { ?>
+                            else: ?>
                                 Faça Login
-                            <?php } ?>
+                            <?php endif; ?>
                             <b class="caret"></b>
                         </p>
                     </a>
                     <ul class="dropdown-menu">
                         <li><a href="#">Meus Dados</a></li>
-                        <li><a href="#">Another action</a></li>
-                        <li><a href="#">Something</a></li>
-                        <li><a href="#">Another action</a></li>
-                        <li><a href="#">Something</a></li>
                         <li class="divider"></li>
                         <li><a href="/logout">Sair</a></li>
                     </ul>

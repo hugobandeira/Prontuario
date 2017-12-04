@@ -8,8 +8,9 @@
                     <div class="header">
                         <h4 class="title">Cadastro de Medicos</h4>
                     </div>
+                    <?php include __DIR__ . "/../../layouts/msg.php" ?>
                     <div class="content">
-                        <form method="post" action="/medicos/add">
+                        <form method="post" action="/admin/medicos/add">
                             <div class="row">
                                 <div class="col-md-5">
                                     <div class="form-group">

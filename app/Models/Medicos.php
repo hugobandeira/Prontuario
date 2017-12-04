@@ -158,11 +158,9 @@ class Medicos
         if ($stmt->execute()) {
             return true;
         } else {
-            echo "Erro ao cadastrar";
-            print_r($stmt->errorInfo());
+            $_SESSION['erro'] = "Erro ao cadastrar " . $stmt->errorInfo()[2];
             return false;
         }
-        return header('/medicos');
     }
 
 
@@ -228,8 +226,7 @@ class Medicos
             return true;
 
         } else {
-            echo "Erro ao cadastrar";
-            print_r($stmt->errorInfo());
+            $_SESSION['erro'] = "Erro ao atualizar " . $stmt->errorInfo()[2];
             return false;
         }
     }
@@ -252,8 +249,7 @@ class Medicos
         if ($stmt->execute()) {
             return true;
         } else {
-            echo "Erro ao remover";
-            print_r($stmt->errorInfo());
+            $_SESSION['erro'] = "Erro ao apagar " . $stmt->errorInfo()[2];
             return false;
         }
     }

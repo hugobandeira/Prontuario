@@ -1,4 +1,4 @@
-<?php include __DIR__ . "/../../layouts/cabecalho.php"; ?>
+<?php include __DIR__ . "/../../layouts/cabecalho-secretaria.php"; ?>
 <div class="content">
     <div class="container-fluid">
         <div class="row">
@@ -6,7 +6,7 @@
                 <div class="card">
                     <br>
                     <div class="pull-right col-md-2">
-                        <a href="/admin/pacientes/add">
+                        <a href="/secretaria/pacientes/add">
                             <button id="btnNovo" class="btn btn-fill btn-sm btn-success" data-toggle="modal"
                                     data-target="#myModal">
                                 <strong> Adicionar</strong>
@@ -42,13 +42,13 @@
                                         <td><?= $paciente['cida'] ?></td>
                                         <td>
                                             <a class="btn btn-fill btn-sm btn-default"
-                                               href="/admin/pacientes/edit/<?php echo $paciente['id']; ?>">
+                                               href="/secretaria/pacientes/edit/<?php echo $paciente['id']; ?>">
                                                 <div class="font-icon-detail">
                                                     <strong>Editar</strong>
                                                 </div>
                                             </a>
                                             <a class="btn btn-fill btn-sm btn-danger"
-                                               href="/admin/pacientes/delete/<?php echo $paciente['id']; ?>"
+                                               href="/secretaria/pacientes/delete/<?php echo $paciente['id']; ?>"
                                                onclick="return confirm('Tem certeza de que deseja remover?');">
                                                 <strong> Deletar</strong>
                                             </a>

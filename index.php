@@ -26,58 +26,124 @@ $route->group('/', function () use ($route) {
     });
 });
 
-$route->group('/home', function () use ($route) {
-    $route->get('', function () {
-        $HomeController = new \App\Controllers\HomeController();
-        $HomeController->index();
-    });
-});
 
-$route->group('/agendamentos', function () use ($route) {
-    $route->get('', function () {
-        $AgendamentosController = new \App\Controllers\AgendamentosController();
-        $AgendamentosController->index();
-    });
-});
+$route->group('/admin', function () use ($route) {
 
-/*
+    $route->group('/home', function () use ($route) {
+        $route->get('', function () {
+            $HomeController = new \App\Controllers\HomeController();
+            $HomeController->index();
+        });
+    });
+
+    $route->group('/agendamentos', function () use ($route) {
+        $route->get('', function () {
+            $AgendamentosController = new \App\Controllers\AgendamentosController();
+            $AgendamentosController->index();
+        });
+    });
+
+    /*
  *USUARIOS CADASTRO PARA ADMIN
  */
-$route->group('/user', function () use ($route) {
-    $route->get('', function () {
-        $UsersController = new \App\Controllers\UsersController();
-        $UsersController->index();
-    });
+    $route->group('/user', function () use ($route) {
+        $route->get('', function () {
+            $UsersController = new \App\Controllers\UsersController();
+            $UsersController->index();
+        });
 
-    $route->get('/add', function () {
-        $UsersController = new \App\Controllers\UsersController;
-        $UsersController->create();
-    });
+        $route->get('/add', function () {
+            $UsersController = new \App\Controllers\UsersController;
+            $UsersController->create();
+        });
 // processa o formulário de cadastro
-    $route->post('/add', function () {
-        $UsersController = new \App\Controllers\UsersController;
-        $UsersController->store();
-    });
+        $route->post('/add', function () {
+            $UsersController = new \App\Controllers\UsersController;
+            $UsersController->store();
+        });
 // edição de usuário
 // exibe o formulário de edição
-    $route->get('/edit/{id}', function ($request) {
-        // pega o ID da URL
-        $id = $request->getAttribute('id');
-        $UsersController = new \App\Controllers\UsersController;
-        $UsersController->edit($id);
-    });
+        $route->get('/edit/{id}', function ($request) {
+            // pega o ID da URL
+            $id = $request->getAttribute('id');
+            $UsersController = new \App\Controllers\UsersController;
+            $UsersController->edit($id);
+        });
 // processa o formulário de edição
-    $route->post('/edit', function () {
-        $UsersController = new \App\Controllers\UsersController();
-        $UsersController->update();
-    });
+        $route->post('/edit', function () {
+            $UsersController = new \App\Controllers\UsersController();
+            $UsersController->update();
+        });
 // remove um usuário
-    $route->get('/remove/{id}', function ($request) {
-        // pega o ID da URL
-        $id = $request->getAttribute('id');
-        $UsersController = new \App\Controllers\UsersController();
-        $UsersController->remove($id);
+        $route->get('/remove/{id}', function ($request) {
+            // pega o ID da URL
+            $id = $request->getAttribute('id');
+            $UsersController = new \App\Controllers\UsersController();
+            $UsersController->remove($id);
+        });
     });
+
+
+    $route->group('/medicos', function () use ($route) {
+        $route->get('', function () {
+            $MedicosController = new \App\Controllers\MedicosController();
+            $MedicosController->index();
+        });
+        $route->get('/add', function () {
+            $MedicosController = new \App\Controllers\MedicosController();
+            $MedicosController->create();
+        });
+        $route->post('/add', function () {
+            $MedicosController = new \App\Controllers\MedicosController();
+            $MedicosController->store();
+        });
+        $route->get('/edit/{id}', function ($request) {
+            $id = $request->getAttribute('id');
+            $MedicosController = new \App\Controllers\MedicosController();
+            $MedicosController->show($id);
+        });
+        $route->post('/edit', function ($request) {
+            $MedicosController = new \App\Controllers\MedicosController();
+            $MedicosController->update();
+        });
+
+        $route->get('/delete/{id}', function ($request) {
+            $id = $request->getAttribute('id');
+            $MedicosController = new \App\Controllers\MedicosController();
+            $MedicosController->delete($id);
+        });
+    });
+
+    $route->group('/pacientes', function () use ($route) {
+        $route->get('', function () {
+            $Pacientes = new \App\Controllers\PacientesController();
+            $Pacientes->index();
+        });
+        $route->get('/add', function ($request) {
+            $Pacientes = new \App\Controllers\PacientesController();
+            $Pacientes->create();
+        });
+        $route->post('/add', function ($request) {
+            $Pacientes = new \App\Controllers\PacientesController();
+            $Pacientes->store();
+        });
+        $route->get('/edit/{id}', function ($request) {
+            $id = $request->getAttribute('id');
+            $Pacientes = new \App\Controllers\PacientesController();
+            $Pacientes->show($id);
+        });
+        $route->post('/edit', function ($request) {
+            $Pacientes = new \App\Controllers\PacientesController();
+            $Pacientes->update();
+        });
+        $route->get('/delete/{id}', function ($request) {
+            $id = $request->getAttribute('id');
+            $Pacientes = new  \App\Controllers\PacientesController();
+            $Pacientes->delete($id);
+        });
+
+    });
+
 });
 
 
@@ -167,9 +233,35 @@ $route->group('/secretaria', function () use ($route) {
 
     $route->group('/pacientes', function () use ($route) {
         $route->get('', function () {
+            $secretaria = new \App\Controllers\PacientesSecretariaController();
+            $secretaria->index();
+        });
 
+        $route->get('/add', function () {
+            $secretaria = new \App\Controllers\PacientesSecretariaController();
+            $secretaria->create();
+        });
+        $route->post('/add', function () {
+            $secretaria = new \App\Controllers\PacientesSecretariaController();
+            $secretaria->store();
+        });
+        $route->get('/edit/{id}', function ($request) {
+            $id = $request->getAttribute('id');
+            $secretaria = new \App\Controllers\PacientesSecretariaController();
+            $secretaria->show($id);
+        });
+        $route->post('/edit', function ($request) {
+            $secretaria = new \App\Controllers\PacientesSecretariaController();
+            $secretaria->update();
+        });
+        $route->get('/delete/{id}', function ($request) {
+            $id = $request->getAttribute('id');
+            $secretaria = new \App\Controllers\PacientesSecretariaController();
+            $secretaria->update();
         });
     });
+
+
     $route->group('/agendamentos', function () use ($route) {
         $route->get('', function () {
             $agendamento = new \App\Controllers\AgendaSecretariaController();
@@ -201,63 +293,4 @@ $route->group('/secretaria', function () use ($route) {
 });
 
 
-$route->group('/medicos', function () use ($route) {
-    $route->get('', function () {
-        $MedicosController = new \App\Controllers\MedicosController();
-        $MedicosController->index();
-    });
-    $route->get('/add', function () {
-        $MedicosController = new \App\Controllers\MedicosController();
-        $MedicosController->create();
-    });
-    $route->post('/add', function () {
-        $MedicosController = new \App\Controllers\MedicosController();
-        $MedicosController->store();
-    });
-    $route->get('/edit/{id}', function ($request) {
-        $id = $request->getAttribute('id');
-        $MedicosController = new \App\Controllers\MedicosController();
-        $MedicosController->show($id);
-    });
-    $route->post('/edit', function ($request) {
-        $MedicosController = new \App\Controllers\MedicosController();
-        $MedicosController->update();
-    });
-
-    $route->get('/delete/{id}', function ($request) {
-        $id = $request->getAttribute('id');
-        $MedicosController = new \App\Controllers\MedicosController();
-        $MedicosController->delete($id);
-    });
-});
-
-$route->group('/pacientes', function () use ($route) {
-    $route->get('', function () {
-        $Pacientes = new \App\Controllers\PacientesController();
-        $Pacientes->index();
-    });
-    $route->get('/add', function ($request) {
-        $Pacientes = new \App\Controllers\PacientesController();
-        $Pacientes->create();
-    });
-    $route->post('/add', function ($request) {
-        $Pacientes = new \App\Controllers\PacientesController();
-        $Pacientes->store();
-    });
-    $route->get('/edit/{id}', function ($request) {
-        $id = $request->getAttribute('id');
-        $Pacientes = new \App\Controllers\PacientesController();
-        $Pacientes->show($id);
-    });
-    $route->post('/edit', function ($request) {
-        $Pacientes = new \App\Controllers\PacientesController();
-        $Pacientes->update();
-    });
-    $route->get('/delete/{id}', function ($request) {
-        $id = $request->getAttribute('id');
-        $Pacientes = new  \App\Controllers\PacientesController();
-        $Pacientes->delete($id);
-    });
-
-});
 return $route->run();

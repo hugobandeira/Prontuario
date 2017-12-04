@@ -19,7 +19,7 @@
                     <div style="text-align: center" class="header">
                         <h4 class="title">Agendamento</h4>
                         <p class="category">lista de agendamentos</p>
-                        <a href="/medico/agendamentos" class="btn btn-primary">Faça um agendamento</a>
+                        <a href="/medico/agendamentos" class="btn btn-primary">Veja seus agendamentos agendamento</a>
                     </div>
                     <div class="content table-responsive table-full-width">
                     </div>
@@ -30,7 +30,7 @@
                 <div style="text-align: center" class="card">
                     <div class="header">
                         <h4 class="title">Pacientes</h4>
-                        <p class="category">lista de Pacientes</p>
+                        <p class="category">lista de Pacientes que já se consultaram com vc</p>
                         <a href="/medico/paciente" class="btn btn-primary">Todos os pacientes</a>
                     </div>
                     <div class="content table-responsive table-full-width">
@@ -246,8 +246,9 @@
         </div>
     </div>
 
-
     <script type="text/javascript">
+
+        $('#medicos').addClass('active');
         $(document).ready(function () {
 
             demo.initChartist();

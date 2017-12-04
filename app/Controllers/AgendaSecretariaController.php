@@ -51,7 +51,7 @@ class AgendaSecretariaController
         $medicos = Medicos::selectAll();
         $agendamento = AgendarSecretaria::selectAll($id)[0];
         if ($agendamento['status'] == 'F') {
-            $_SESSION['msg'] = "Agendamento está finalizado";
+            $_SESSION['erro'] = "Agendamento está finalizado";
             header('location: /secretaria/agendamentos');
             exit();
         } else {
@@ -73,7 +73,7 @@ class AgendaSecretariaController
     {
         $agendamento = AgendarSecretaria::selectAll($id)[0];
         if ($agendamento['status'] == 'F') {
-            $_SESSION['msg'] = "Agendamento está finalizado";
+            $_SESSION['erro'] = "Agendamento está finalizado";
             header('location: /secretaria/agendamentos');
             exit();
         } else {
