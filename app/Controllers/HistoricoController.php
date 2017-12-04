@@ -22,8 +22,8 @@ class HistoricoController
     {
         $agendamento = $id;
 
-        $historico = Historico::agendamentos($id);
-        return View::make('/medico/historico/index', compact('historico'));
+        $historicos = Historico::agendamentos($id);
+        return View::make('/medico/historico/index', compact('historicos'));
 
     }
 

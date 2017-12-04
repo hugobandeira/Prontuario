@@ -147,60 +147,43 @@
         <?php include __DIR__ . "/../../layouts/partials/medico/navbar.php"; ?>
 
         <div class="timeline">
-            <div class="container left">
-                <div class="content">
-                    <h2>2017</h2>
-                    <p>Lorem ipsum dolor sit amet, quo ei simul congue exerci, ad nec admodum perfecto
-                        mnesarchum, vim ea mazim fierent detracto. Ea quis iuvaret expetendis his, te elit
-                        voluptua dignissim per, habeo iusto primis ea eam.</p>
-                </div>
-            </div>
-            <div class="container right">
-                <div class="content">
-                    <h2>2016</h2>
-                    <p>Lorem ipsum dolor sit amet, quo ei simul congue exerci, ad nec admodum perfecto
-                        mnesarchum, vim ea mazim fierent detracto. Ea quis iuvaret expetendis his, te elit
-                        voluptua dignissim per, habeo iusto primis ea eam.</p>
-                </div>
-            </div>
-            <div class="container left">
-                <div class="content">
-                    <h2>2015</h2>
-                    <p>Lorem ipsum dolor sit amet, quo ei simul congue exerci, ad nec admodum perfecto
-                        mnesarchum, vim ea mazim fierent detracto. Ea quis iuvaret expetendis his, te elit
-                        voluptua dignissim per, habeo iusto primis ea eam.</p>
-                </div>
-            </div>
-            <div class="container right">
-                <div class="content">
-                    <h2>2012</h2>
-                    <p>Lorem ipsum dolor sit amet, quo ei simul congue exerci, ad nec admodum perfecto
-                        mnesarchum, vim ea mazim fierent detracto. Ea quis iuvaret expetendis his, te elit
-                        voluptua dignissim per, habeo iusto primis ea eam.</p>
-                </div>
-            </div>
-            <div class="container left">
-                <div class="content">
-                    <h2>2011</h2>
-                    <p>Lorem ipsum dolor sit amet, quo ei simul congue exerci, ad nec admodum perfecto
-                        mnesarchum, vim ea mazim fierent detracto. Ea quis iuvaret expetendis his, te elit
-                        voluptua dignissim per, habeo iusto primis ea eam.</p>
-                </div>
-            </div>
-            <div class="container right">
-                <div class="content">
-                    <h2>2007</h2>
-                    <p>Lorem ipsum dolor sit amet, quo ei simul congue exerci, ad nec admodum perfecto
-                        mnesarchum, vim ea mazim fierent detracto. Ea quis iuvaret expetendis his, te elit
-                        voluptua dignissim per, habeo iusto primis ea eam.</p>
-                </div>
-            </div>
-        </div>
+            <?php if (isset($historicos)): ?>
+                <?php foreach ($historicos as $historico): ?>
+                    <div <?php if ($historico['id'] / 2 != 0): ?>
+                        class="container left"
+                    <?php else: ?>
+                        class="container right"
+                    <?php endif; ?>
+                    >
+                        <div class="content">
+                            <h5><?= $historico['nome_paciente'] ?></h5>
+                            <p>Data de atenimento: <?= $historico['data'] ?></p>
+                            <p>Medico: <?= $historico['nome_medico'] ?></p>
+                            <p>Dor: <?= $historico['dor'] ?></p>
+                            <p>Hipotese: <?= $historico['hipotese'] ?></p>
+                            <p>Problemas cardiacos: <?= $historico['pr_cariacos'] ?></p>
+                            <p>Ultiliza Medicamentos: <?= $historico['ultiliza_med'] ?></p>
+                            <p>Queixa principal: <?= $historico['queixa_principal'] ?></p>
+                            <p>Evolucao: <?= $historico['evolucao'] ?></p>
+                            <p>Observação: <?= $historico['obs'] ?></p>
 
-        <?php include __DIR__ . "/../../layouts/partials/footer.php"; ?>
+                        </div>
+                    </div>
+                <?php endforeach; ?>
+            <?php endif; ?>
+        </div>
     </div>
-    <?= include __DIR__ . "/../../layouts/partials/scripts.php"; ?>
 </div>
+<footer class="footer">
+    <div class="container-fluid">
+        <p class="copyright pull-left">
+            &copy;
+            <script>document.write(new Date().getFullYear())</script>
+            <a href="https://www.facebook.com/jackson.hugo.7">Hugo Soluções</a>, Todos os direitos reservados
+        </p>
+    </div>
+</footer>
+<?= include __DIR__ . "/../../layouts/partials/scripts.php"; ?>
 </body>
 </html>
 

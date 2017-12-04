@@ -17,7 +17,7 @@ class MedicoPaciente
         $medico = Medicos::medico($id);
 
         $DB = new DB;
-        $sql = sprintf("SELECT DISTINCT Paci.nome  FROM Agendamento
+        $sql = sprintf("SELECT DISTINCT Paci.nome, paciente_id  FROM Agendamento
   INNER JOIN Paci ON Agendamento.paciente_id = Paci.id  WHERE medico_id = :medico ORDER BY nome ASC");
 
         $stmt = $DB->prepare($sql);
